@@ -1,0 +1,1 @@
+Neste pacote deverá constar todas as classes utilitárias necessárias ao projeto.
