@@ -118,9 +118,9 @@ public class Tarefa extends Perfil{
     
     public boolean tarefaEstado(){
         if(cadastrada&&iniciada&&concluida==false&&descartada==false){
-           return !emAndamento;          
+           return emAndamento=true;          
         } else {
-            return emAndamento;
+            return emAndamento=false;
         }       
     }
     
