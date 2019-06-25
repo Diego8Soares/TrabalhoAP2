@@ -15,6 +15,18 @@ public class Perfil {
     protected String nomeUsuario;
     protected String cargo;
     protected String setorTrabalho;
+    
+    public void Perfil(){
+        
+    }
+    
+    public void Perfil(String nome, String Cargo, String perfil, String setor){
+        nomeUsuario=nome;
+        cargo=Cargo;
+        setorTrabalho=setor;
+        tipoPerfil = perfil;
+        
+    }
 
     public String getTipoPerfil() {
         return tipoPerfil;

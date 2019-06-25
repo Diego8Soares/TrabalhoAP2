@@ -32,7 +32,7 @@ public class Tarefa extends Perfil{
     protected LocalDate   tarefaConclusaoPrevista;
     protected LocalDate   tarefaConclusao;
     
-    protected Period   tempoDias;
+    protected int tempoDias,tempoHoras;
     
     protected String tarefaDescricao;
     protected String tarefaSolucao;
@@ -86,7 +86,7 @@ public class Tarefa extends Perfil{
                 dias=prazoDias%30;
 
                 tarefaConclusaoPrevista=inicio.plusDays(dias);
-                tarefaConclusaoPrevista=inicio.plusMonths(mes);            
+                tarefaConclusaoPrevista=tarefaConclusaoPrevista.plusMonths(mes);            
             }
 
             iniciada = true;
@@ -106,19 +106,24 @@ public class Tarefa extends Perfil{
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
         tarefaConclusao=LocalDate.now();
+              
+        //Adicionar o tempo gasto para conclusão
+        tempoDias = Period.between(tarefaInicio,tarefaConclusao).getDays()+30*30*Period.between(tarefaInicio,tarefaConclusao).getMonths();
+        tempoHoras = tempoDias*8;
+        
         this.concluida = true;
         
-        //Adicionar o tempo gasto para conclusão
-        tempoDias = tarefaInicio.until(tarefaConclusao);
         } else {
             this.concluida = false;
         }
     }
     
-    public void descartarTarefa(boolean descarta){
+    public boolean descartarTarefa(boolean descarta){
         //Adicionar condição para DESCARTADA
         if(cadastrada=true&&iniciada==true&&concluida==false&&descarta==true){
-            descartada = true;
+            return descartada = true;
+        } else {
+            return descartada = false;
         }
         //Criar rotina que exclua a tarefa por nome do relator, da tarefa e qqr outro meio
         
@@ -131,5 +136,7 @@ public class Tarefa extends Perfil{
             return emAndamento=false;
         }       
     }
+    
+    
     
 }

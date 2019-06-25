@@ -5,6 +5,10 @@
  */
 package br.com.ap220191.ec01_faculdade.model;
 
+import br.com.ap220191.ec02_controle_tarefas.util.Tarefa;
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  *
  * @author gilmario
@@ -12,9 +16,25 @@ package br.com.ap220191.ec01_faculdade.model;
 public class Teste {
     public static void main(String args[]){
         
+        LocalDate hoje = LocalDate.now();        
+        LocalDate mesQueVem = hoje.plusDays(3);
         
+        mesQueVem = mesQueVem.plusMonths(4);
+        int dias = Period.between(hoje,mesQueVem).getDays() + 30*Period.between(hoje,mesQueVem).getMonths();
         
-        System.out.println("Hello World!");
+        Tarefa teste = new Tarefa();
+        
+        teste.Perfil("Diego", "Produtor", "Administrador", "Oficial");
+        
+        teste.cadastrarTarefa(teste.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Andar 2 km por dia", "Manutenção");
+        teste.iniciarTarefa(hoje, dias);
+        
+        if(teste.descartarTarefa(false)){
+            System.out.println("Tarefa descartada");
+        } else {
+            System.out.println("Tarefa em andamento!");
+        }        
+        
     }
     
 }
