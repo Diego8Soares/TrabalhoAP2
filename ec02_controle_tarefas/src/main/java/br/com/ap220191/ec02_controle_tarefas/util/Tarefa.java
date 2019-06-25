@@ -6,6 +6,7 @@
 package br.com.ap220191.ec02_controle_tarefas.util;
 
 import java.time.LocalDate;
+import java.time.Period;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +22,9 @@ public class Tarefa extends Perfil{
     protected boolean emAndamento=false; 
     
     protected String tarefaNome;
-    protected String tarefaTipo;
+/*Defeito - prioridade 1
+  Melhoria - Prioridade 2*/
+    protected String tarefaTipo; 
     protected String tarefaRelator;
     protected String tarefaExecutor;
     
@@ -29,17 +32,18 @@ public class Tarefa extends Perfil{
     protected LocalDate   tarefaConclusaoPrevista;
     protected LocalDate   tarefaConclusao;
     
+    protected Period   tempoDias;
+    
     protected String tarefaDescricao;
     protected String tarefaSolucao;
     
-    protected int tempoDias;
     private long mes,dias;
     
     protected LocalDate hoje = LocalDate.now();
     
     
     //Métodos relacionados às tarefas
-    public void cadastrarTarefa(String tipoPerfil, String relator, String tarefaNome, String executor, String descricao){
+    public void cadastrarTarefa(String tipoPerfil, String relator, String tarefaNome, String executor, String descricao, String tipoTarefa){
         //Necessário inserir um try-catch para o caso de não serem informados nomes válidos
         
         if("Administrador".equals(tipoPerfil)&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false){
@@ -49,6 +53,7 @@ public class Tarefa extends Perfil{
             tarefaExecutor=executor;
 
             tarefaDescricao=descricao;
+            tarefaTipo = tipoTarefa;
 
             cadastrada=true;
         } else {
@@ -96,12 +101,15 @@ public class Tarefa extends Perfil{
     
     public void concluirTarefa(String solucao, boolean concluida){
         //Rever o atributo de entrada CONCLUIDA
-        if (cadastrada==true&&iniciada==true&&descartada==false){            
+        if (cadastrada==true&&iniciada==true&&descartada==false&&concluida==true){            
         //Adiconar uma condicão para CONCLUIDA
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
+        tarefaConclusao=LocalDate.now();
         this.concluida = true;
         
+        //Adicionar o tempo gasto para conclusão
+        tempoDias = tarefaInicio.until(tarefaConclusao);
         } else {
             this.concluida = false;
         }
