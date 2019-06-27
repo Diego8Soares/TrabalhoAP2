@@ -42,10 +42,20 @@ public class Projeto extends Tarefa{
             projFase = "Criado!";
         }
         
-        this.projeto = projetoOUtarefa; //Se FALSE: impedir de gerar tarefas (Sistema)   
+        if(iniciado==false&&concluido==false&&andamento==false&&projetoOUtarefa==false){
+            projNome = "Tarefa simples";
+            
+            projFase = "Criado!";
+        }
+        
+        
+        
+        this.projeto = projetoOUtarefa;
+        //Se FALSE: impedir de gerar tarefas (Sistema)   
     }
     
     public void iniciarProjeto(LocalDate start,int prazoDias){
+    //Para os casos de ser uma TAREFA SIMPLES, chama o método de iniciar tarefa
         if(iniciado==false&&concluido==false&&andamento==false&&projeto){
             projInicio = start;
             
