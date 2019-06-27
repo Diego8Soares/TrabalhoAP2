@@ -19,11 +19,12 @@ public class Tarefa extends Perfil{
     protected boolean iniciada=false;
     protected boolean concluida=false;
     protected boolean descartada=false;
-    protected boolean emAndamento=false; 
+    protected boolean emAndamento=false;
+    protected boolean prioridade=false;
     
     protected String tarefaNome;
-/*Defeito - prioridade 1
-  Melhoria - Prioridade 2*/
+/*Defeito - prioridade 1 (TRUE)
+ Melhoria - Prioridade 2 (FALSE) */
     protected String tarefaTipo; 
     protected String tarefaRelator;
     protected String tarefaExecutor;
@@ -32,7 +33,7 @@ public class Tarefa extends Perfil{
     protected LocalDate   tarefaConclusaoPrevista;
     protected LocalDate   tarefaConclusao;
     
-    protected int tempoDias,tempoHoras;
+    private int tempoDias,tempoHoras;
     
     protected String tarefaDescricao;
     protected String tarefaSolucao;
@@ -43,29 +44,39 @@ public class Tarefa extends Perfil{
     
     
     //Métodos relacionados às tarefas
-    public void cadastrarTarefa(String tipoPerfil, String relator, String tarefaNome, String executor, String descricao, String tipoTarefa){
+    public void cadastrarTarefa(String tipoPerfil, String relator, String tarefaNome, String executor,String tipoTarefa){
         //Necessário inserir um try-catch para o caso de não serem informados nomes válidos
         
-        if("Administrador".equals(tipoPerfil)&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false){
+        if("Administrador".equals(tipoPerfil)&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
             this.tarefaNome=tarefaNome;
                 
             tarefaRelator=relator;
             tarefaExecutor=executor;
-
-            tarefaDescricao=descricao;
+            
             tarefaTipo = tipoTarefa;
+            
+            if("Defeito".equals(tarefaTipo)){
+                prioridade = true;
+            } else if("Melhoria".equals(tarefaTipo)) {
+                prioridade=false;
+            } else {
+                //Informar erro
+                JOptionPane.showMessageDialog(null, "Este não é um tipo de tarefa válido!");
+            }
 
             cadastrada=true;
         } else {
             JOptionPane.showMessageDialog(null, "Perfil não autorizado!");
-        }
-        
+        }  
     }
     
+    public void descreverTarefa(String descricao){
+        tarefaDescricao=descricao;
+    }
     
     public void iniciarTarefa(LocalDate inicio, int prazoDias){
         
-        if(cadastrada&&descartada==false&&concluida==false&&iniciada==false){
+        if(cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
             
             tarefaInicio=inicio;
         
@@ -96,12 +107,15 @@ public class Tarefa extends Perfil{
                 JOptionPane.showMessageDialog(null, "Esta tarefa não possui cadastro!");
         }
         
-        
+        if(iniciada){
+            emAndamento=true;
+        }
+             
     }
     
     public void concluirTarefa(String solucao, boolean concluida){
         //Rever o atributo de entrada CONCLUIDA
-        if (cadastrada==true&&iniciada==true&&descartada==false&&concluida==true){            
+        if (cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
         //Adiconar uma condicão para CONCLUIDA
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
@@ -112,6 +126,7 @@ public class Tarefa extends Perfil{
         tempoHoras = tempoDias*8;
         
         this.concluida = true;
+        emAndamento=false;
         
         } else {
             this.concluida = false;
@@ -120,17 +135,18 @@ public class Tarefa extends Perfil{
     
     public boolean descartarTarefa(boolean descarta){
         //Adicionar condição para DESCARTADA
-        if(cadastrada=true&&iniciada==true&&concluida==false&&descarta==true){
+        if(cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
+            emAndamento=false;
             return descartada = true;
         } else {
             return descartada = false;
         }
         //Criar rotina que exclua a tarefa por nome do relator, da tarefa e qqr outro meio
-        
+        //||--> Exclusão vai ser realizada em PROJETO
     }
     
     public boolean tarefaEstado(){
-        if(cadastrada&&iniciada&&concluida==false&&descartada==false){
+        if(cadastrada&&iniciada&&concluida==false&&descartada==false&&emAndamento){
            return emAndamento=true;          
         } else {
             return emAndamento=false;

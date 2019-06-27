@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.ap220191.ec01_faculdade.model;
+//package br.com.ap220191.ec01_faculdade.model;
+package br.com.ap220191.ec02_controle_tarefas.model;
 
 import br.com.ap220191.ec02_controle_tarefas.util.Tarefa;
 import java.time.LocalDate;
@@ -26,10 +27,12 @@ public class Teste {
         
         teste.Perfil("Diego", "Produtor", "Administrador", "Oficial");
         
-        teste.cadastrarTarefa(teste.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Andar 2 km por dia", "Manutenção");
+        teste.cadastrarTarefa(teste.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Melhoria");
         teste.iniciarTarefa(hoje, dias);
         
-        if(teste.descartarTarefa(false)){
+        boolean b=true;
+        
+        if(!b){
             System.out.println("Tarefa descartada");
         } else {
             System.out.println("Tarefa em andamento!");
