@@ -13,26 +13,28 @@ import javax.swing.JOptionPane;
  *
  * @author Diego dos Santos
  */
-public class Projeto extends Tarefa{
+public class Projeto {
     
-    protected String projNome;
-    protected String projFase = "";
+    private String projNome;
+    private String projFase = "";
     
-    //protected boolean criado=false;
-    protected boolean iniciado=false;
-    protected boolean concluido = false;
-    protected boolean projeto=false; //Define se será um projeto ou tarefa simples
-    protected boolean andamento=false;
+    //private boolean criado=false;
+    private boolean iniciado=false;
+    private boolean concluido = false;
+    private boolean projeto=false; //Define se será um projeto ou tarefa simples
+    private boolean andamento=false;
     
-    protected LocalDate projInicio;
-    protected LocalDate projConclusao;
-    protected LocalDate projConclusaoPrevista;
+    private LocalDate projInicio;
+    private LocalDate projConclusao;
+    private LocalDate projConclusaoPrevista;
+    
+    private LocalDate hoje = LocalDate.now();
     
     private long mes,dias;
             
     private int tempoDias,tempoHoras;
     
-    //protected LocalDate hoje = LocalDate.now();
+    //private LocalDate hoje = LocalDate.now();
     
     public void criarProjeto(String nome, boolean projetoOUtarefa ){
         
@@ -103,7 +105,7 @@ public class Projeto extends Tarefa{
         projConclusao=LocalDate.now();
               
         //Adicionar o tempo gasto para conclusão
-        tempoDias = Period.between(projInicio,projConclusao).getDays()+30*30*Period.between(tarefaInicio,tarefaConclusao).getMonths();
+        tempoDias = Period.between(projInicio,projConclusao).getDays()+30*30*Period.between(projInicio,projConclusao).getMonths();
         tempoHoras = tempoDias*8;
         
         concluido = true;

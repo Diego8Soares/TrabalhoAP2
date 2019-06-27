@@ -6,6 +6,7 @@
 //package br.com.ap220191.ec01_faculdade.model;
 package br.com.ap220191.ec02_controle_tarefas.model;
 
+import br.com.ap220191.ec02_controle_tarefas.util.Perfil;
 import br.com.ap220191.ec02_controle_tarefas.util.Tarefa;
 import java.time.LocalDate;
 import java.time.Period;
@@ -25,9 +26,11 @@ public class Teste {
         
         Tarefa teste = new Tarefa();
         
-        teste.Perfil("Diego", "Produtor", "Administrador", "Oficial");
+        Perfil perfil = new Perfil();
         
-        teste.cadastrarTarefa(teste.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Melhoria");
+        perfil.Perfil("Diego", "Produtor", "Administrador", "Oficial");
+        
+        teste.cadastrarTarefa(perfil.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Melhoria");
         teste.iniciarTarefa(hoje, dias);
         
         boolean b=true;

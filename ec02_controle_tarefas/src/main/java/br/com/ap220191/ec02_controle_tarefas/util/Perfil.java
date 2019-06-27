@@ -11,10 +11,10 @@ package br.com.ap220191.ec02_controle_tarefas.util;
  */
 public class Perfil {
     
-    protected String tipoPerfil;
-    protected String nomeUsuario;
-    protected String cargo;
-    protected String setorTrabalho;
+    private String tipoPerfil;
+    private String nomeUsuario;
+    private String cargo;
+    private String setorTrabalho;
     
     public void Perfil(){
         

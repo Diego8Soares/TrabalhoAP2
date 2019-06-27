@@ -13,34 +13,36 @@ import javax.swing.JOptionPane;
  *
  * @author Diego dos Santos
  */
-public class Tarefa extends Perfil{
+public class Tarefa {
     
-    protected boolean cadastrada=false;
-    protected boolean iniciada=false;
-    protected boolean concluida=false;
-    protected boolean descartada=false;
-    protected boolean emAndamento=false;
-    protected boolean prioridade=false;
+    private boolean cadastrada=false;
+    private boolean iniciada=false;
+    private boolean concluida=false;
+    private boolean descartada=false;
+    private boolean emAndamento=false;
+    private boolean prioridade=false;
     
-    protected String tarefaNome;
+    private String tarefaNome;
 /*Defeito - prioridade 1 (TRUE)
  Melhoria - Prioridade 2 (FALSE) */
-    protected String tarefaTipo; 
-    protected String tarefaRelator;
-    protected String tarefaExecutor;
+    private String tarefaTipo; 
+    private String tarefaRelator;
+    private String tarefaExecutor;
     
-    protected LocalDate   tarefaInicio;
-    protected LocalDate   tarefaConclusaoPrevista;
-    protected LocalDate   tarefaConclusao;
+    private LocalDate   tarefaInicio;
+    private LocalDate   tarefaConclusaoPrevista;
+    private LocalDate   tarefaConclusao;
     
     private int tempoDias,tempoHoras;
     
-    protected String tarefaDescricao;
-    protected String tarefaSolucao;
+    private String tarefaDescricao;
+    private String tarefaSolucao;
     
     private long mes,dias;
     
-    protected LocalDate hoje = LocalDate.now();
+    private LocalDate hoje = LocalDate.now();
+    
+    private Perfil perfil;
     
     
     //Métodos relacionados às tarefas
