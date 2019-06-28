@@ -7,6 +7,7 @@ package br.com.ap220191.ec02_controle_tarefas.util;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,7 +43,21 @@ public class Tarefa {
     
     private LocalDate hoje = LocalDate.now();
     
-    private Perfil perfil;
+    private ArrayList<Perfil> perfisTarefa;
+        
+    public void Tarefa(){
+        perfisTarefa = new ArrayList<Perfil>();
+    }
+    
+    public void adicionarPerfil(Perfil perfil){
+        perfisTarefa.add(perfil);
+    }
+    public int quantidadePerfis(){
+        return perfisTarefa.size();
+    }
+    public void getPerfil(int posicao){
+        perfisTarefa.get(posicao);
+    }
     
     
     //Métodos relacionados às tarefas

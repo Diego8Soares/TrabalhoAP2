@@ -5,6 +5,8 @@
  */
 package br.com.ap220191.ec02_controle_tarefas.util;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego dos Santos
@@ -16,16 +18,33 @@ public class Perfil {
     private String cargo;
     private String setorTrabalho;
     
+    private ArrayList<Tarefa> tarefasPerfil;
+    private ArrayList<Projeto> projetosPerfil;
+    
     public void Perfil(){
-        
+        tarefasPerfil = new ArrayList<Tarefa>();
+        projetosPerfil = new ArrayList<Projeto>();
+    }
+    
+    public void adicionarTarefa(Tarefa tarefa){
+        tarefasPerfil.add(tarefa);
+    }
+    public int quantidadeTarefas(){
+        return tarefasPerfil.size();
+    }
+    
+    public void adicionarProjeto(Projeto projeto){
+        projetosPerfil.add(projeto);
+    }
+    public int quantidadeProjetos(){
+        return projetosPerfil.size();
     }
     
     public void Perfil(String nome, String Cargo, String perfil, String setor){
         nomeUsuario=nome;
         cargo=Cargo;
         setorTrabalho=setor;
-        tipoPerfil = perfil;
-        
+        tipoPerfil = perfil;    
     }
 
     public String getTipoPerfil() {

@@ -7,6 +7,7 @@ package br.com.ap220191.ec02_controle_tarefas.util;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,11 +31,38 @@ public class Projeto {
     
     private LocalDate hoje = LocalDate.now();
     
+    private ArrayList<Tarefa> tarefasProjeto;
+    private ArrayList<Perfil> perfisProjeto;
+    
     private long mes,dias;
             
     private int tempoDias,tempoHoras;
     
     //private LocalDate hoje = LocalDate.now();
+    public void Projeto(){
+        tarefasProjeto = new ArrayList<Tarefa>();
+        perfisProjeto  = new ArrayList<Perfil>();
+    }
+    
+    public void adicionarTarefa(Tarefa tarefa){
+        tarefasProjeto.add(tarefa);
+    }
+    public int quantidadeTarefas(){
+        return tarefasProjeto.size();
+    }
+    public void getTarefas(int posicao){
+        perfisProjeto.get(posicao);
+    }
+    
+    public void adicionarPerfil(Perfil perfil){
+        perfisProjeto.add(perfil);
+    } 
+    public int quantidadePerfis(){
+        return perfisProjeto.size();
+    }
+    public void getPerfil(int posicao){
+        perfisProjeto.get(posicao);
+    }
     
     public void criarProjeto(String nome, boolean projetoOUtarefa ){
         

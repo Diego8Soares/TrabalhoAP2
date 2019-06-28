@@ -5,18 +5,24 @@
  */
 package br.com.ap220191.ec02_controle_tarefas.util;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego dos Santos
  */
 public class Consulta {
 //Classe apenas irá puxar os dados do projeto e apresentar
+    /*Aparemente é melhor chamar um projeto inteiro e então gerar uma rotina
+    pra verificar cada uma das verficações abaixo*/
     
-    public void porFASE(String faseProjeto){
+    private ArrayList<Projeto> projetosAnalise;
+    
+    public void porFASE(Projeto faseProjeto){
         //Defnir posição que vai ser chamada no array
     }
     
-    public void porTAREFA(String nomeTarefa){
+    public void porTAREFA(Tarefa nomeTarefa){
         
     }
     
@@ -24,11 +30,11 @@ public class Consulta {
         
     }
     
-    public void porRELATOR(String relator){
+    public void porRELATOR(Tarefa relator){
         
     }
     
-    public void porEXECUTOR(String executor){
+    public void porEXECUTOR(Tarefa executor){
         
     }
     
