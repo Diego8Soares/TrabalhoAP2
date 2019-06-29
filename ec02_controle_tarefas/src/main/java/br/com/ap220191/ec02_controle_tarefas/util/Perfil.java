@@ -21,10 +21,11 @@ public class Perfil {
     private ArrayList<Tarefa> tarefasPerfil;
     private ArrayList<Projeto> projetosPerfil;
     
-    public void Perfil(){
-        tarefasPerfil = new ArrayList<Tarefa>();
+    public Perfil(){
+        tarefasPerfil  = new ArrayList<Tarefa>();
         projetosPerfil = new ArrayList<Projeto>();
     }
+    
     
     public void adicionarTarefa(Tarefa tarefa){
         tarefasPerfil.add(tarefa);
@@ -32,14 +33,22 @@ public class Perfil {
     public int quantidadeTarefas(){
         return tarefasPerfil.size();
     }
+    public Tarefa getTarefasPerfil(int posicao) {
+        return tarefasPerfil.get(posicao);
+    }
+    
+    
     
     public void adicionarProjeto(Projeto projeto){
         projetosPerfil.add(projeto);
     }
     public int quantidadeProjetos(){
         return projetosPerfil.size();
+    }public Projeto getProjetosPerfil(int posicao) {
+        return projetosPerfil.get(posicao);
     }
-    
+      
+  
     public void Perfil(String nome, String Cargo, String perfil, String setor){
         nomeUsuario=nome;
         cargo=Cargo;
@@ -78,7 +87,5 @@ public class Perfil {
     public void setSetorTrabalho(String setorTrabalho) {
         this.setorTrabalho = setorTrabalho;
     }
-    
-    
     
 }

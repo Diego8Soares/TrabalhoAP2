@@ -48,9 +48,13 @@ public class Tarefa {
     
     private Projeto projetoVinculadaNome;
         
-    public void Tarefa(){
+    
+    
+    public Tarefa(){
         perfisTarefa = new ArrayList<Perfil>();
     }
+    
+    
     
 /*Primeiramente Adicionar os perfis no objeto e em seguida extraí-los e pô-los 
 no método cadastrar*/
@@ -63,13 +67,25 @@ no método cadastrar*/
     public void getPerfil(int posicao){
         perfisTarefa.get(posicao);
     }
-
+    public Perfil getPerfisTarefa(int posicao) {
+        return perfisTarefa.get(posicao);
+    }
+    
+    
+    
     public void setProjetoVinculadaNome(Projeto projetoVinculada) {
         this.projetoVinculadaNome = projetoVinculada;
     }
     public Projeto getProjetoVinculadaNome() {
         return projetoVinculadaNome;
     }
+
+
+    /* public ArrayList<Perfil> getPerfisTarefa() {
+        return perfisTarefa;
+    }*/
+    
+    
     
     //Métodos relacionados às tarefas
     public void cadastrarTarefa(Perfil relator, Perfil executor, String tarefaNome, String tipoTarefa){
@@ -104,7 +120,7 @@ no método cadastrar*/
     
     public void iniciarTarefa(LocalDate inicio, int prazoDias){
         
-        if("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
+        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
             
             tarefaInicio=inicio;
         
@@ -129,21 +145,18 @@ no método cadastrar*/
             }
 
             iniciada = true;
+            emAndamento=true;
             }
         } else {
             //Informar erro
                 JOptionPane.showMessageDialog(null, "Esta tarefa não possui cadastro!");
         }
         
-        if(iniciada){
-            emAndamento=true;
-        }
-             
     }
     
     public void concluirTarefa(String solucao, boolean concluida){
-        //Rever o atributo de entrada CONCLUIDA
-        if ("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
+        /*Rever o atributo de entrada CONCLUIDA*/
+        if ("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
         //Adiconar uma condicão para CONCLUIDA
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
@@ -163,7 +176,7 @@ no método cadastrar*/
     
     public boolean descartarTarefa(boolean descarta){
         //Adicionar condição para DESCARTADA
-        if("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
+        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
             emAndamento=false;
             return descartada = true;
         } else {
@@ -174,11 +187,35 @@ no método cadastrar*/
     }
     
     public boolean tarefaEstado(){
-        if(cadastrada&&iniciada&&concluida==false&&descartada==false&&emAndamento){
+        if(cadastrada&&iniciada&&concluida==false&&descartada==false){
            return emAndamento=true;          
         } else {
             return emAndamento=false;
         }       
+    }
+
+    public String getTarefaNome() {
+        return tarefaNome;
+    }
+
+    public Perfil getTarefaRelator() {
+        return tarefaRelator;
+    }
+
+    public Perfil getTarefaExecutor() {
+        return tarefaExecutor;
+    }
+
+    public String getTarefaTipo() {
+        return tarefaTipo;
+    }
+
+    public String getTarefaDescricao() {
+        return tarefaDescricao;
+    }
+
+    public String getTarefaSolucao() {
+        return tarefaSolucao;
     }
     
     

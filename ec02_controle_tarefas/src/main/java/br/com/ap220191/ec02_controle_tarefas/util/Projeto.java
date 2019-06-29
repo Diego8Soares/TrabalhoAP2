@@ -35,14 +35,16 @@ public class Projeto {
     private ArrayList<Perfil> perfisProjeto;
     
     private long mes,dias;
-            
+    
     private int tempoDias,tempoHoras;
     
     //private LocalDate hoje = LocalDate.now();
-    public void Projeto(){
+    public Projeto(){
         tarefasProjeto = new ArrayList<Tarefa>();
         perfisProjeto  = new ArrayList<Perfil>();
     }
+    
+    
     
     public void adicionarTarefa(Tarefa tarefa){
         tarefasProjeto.add(tarefa);
@@ -50,9 +52,11 @@ public class Projeto {
     public int quantidadeTarefas(){
         return tarefasProjeto.size();
     }
-    public void getTarefas(int posicao){
-        perfisProjeto.get(posicao);
+    public Tarefa getTarefas(int posicao){
+        return tarefasProjeto.get(posicao);
     }
+    
+    
     
     public void adicionarPerfil(Perfil perfil){
         perfisProjeto.add(perfil);
@@ -60,9 +64,11 @@ public class Projeto {
     public int quantidadePerfis(){
         return perfisProjeto.size();
     }
-    public void getPerfil(int posicao){
-        perfisProjeto.get(posicao);
+    public Perfil getPerfil(int posicao){
+        return perfisProjeto.get(posicao);
     }
+    
+    
     
     public void criarProjeto(String nome, boolean projetoOUtarefa ){
         
@@ -77,8 +83,6 @@ public class Projeto {
             
             projFase = "Criado!";
         }
-        
-        
         
         this.projeto = projetoOUtarefa;
         //Se FALSE: impedir de gerar tarefas (Sistema)   
@@ -116,7 +120,7 @@ public class Projeto {
             projFase = "Início!";
             }
         } else {
-            //Informar erro
+                //Informar erro
                 JOptionPane.showMessageDialog(null, "Este projeto não possui cadastro!");
         }
         
@@ -151,4 +155,14 @@ public class Projeto {
             projFase = fase;
         }   
     }
+
+    public String getProjNome() {
+        return projNome;
+    }
+
+    public String getProjFase() {
+        return projFase;
+    }
+    
+    
 }
