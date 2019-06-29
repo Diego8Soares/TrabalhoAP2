@@ -27,10 +27,12 @@ public class Teste {
         Tarefa teste = new Tarefa();
         
         Perfil perfil = new Perfil();
+        Perfil perfil2 = new Perfil();
         
         perfil.Perfil("Diego", "Produtor", "Administrador", "Oficial");
+        perfil2.Perfil("Diego", "Produtor", "Usuario", "Oficial");
         
-        teste.cadastrarTarefa(perfil.getTipoPerfil(), "Saulo", "Caminhar", "Dupla", "Melhoria");
+        teste.cadastrarTarefa(perfil, perfil2, "Dupla", "Melhoria");
         teste.iniciarTarefa(hoje, dias);
         
         boolean b=true;

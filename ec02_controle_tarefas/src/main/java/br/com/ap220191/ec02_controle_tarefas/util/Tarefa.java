@@ -27,8 +27,6 @@ public class Tarefa {
 /*Defeito - prioridade 1 (TRUE)
  Melhoria - Prioridade 2 (FALSE) */
     private String tarefaTipo; 
-    private String tarefaRelator;
-    private String tarefaExecutor;
     
     private LocalDate   tarefaInicio;
     private LocalDate   tarefaConclusaoPrevista;
@@ -43,12 +41,19 @@ public class Tarefa {
     
     private LocalDate hoje = LocalDate.now();
     
+    private Perfil tarefaRelator;
+    private Perfil tarefaExecutor;
+    
     private ArrayList<Perfil> perfisTarefa;
+    
+    private Projeto projetoVinculadaNome;
         
     public void Tarefa(){
         perfisTarefa = new ArrayList<Perfil>();
     }
     
+/*Primeiramente Adicionar os perfis no objeto e em seguida extraí-los e pô-los 
+no método cadastrar*/
     public void adicionarPerfil(Perfil perfil){
         perfisTarefa.add(perfil);
     }
@@ -58,15 +63,21 @@ public class Tarefa {
     public void getPerfil(int posicao){
         perfisTarefa.get(posicao);
     }
-    
+
+    public void setProjetoVinculadaNome(Projeto projetoVinculada) {
+        this.projetoVinculadaNome = projetoVinculada;
+    }
+    public Projeto getProjetoVinculadaNome() {
+        return projetoVinculadaNome;
+    }
     
     //Métodos relacionados às tarefas
-    public void cadastrarTarefa(String tipoPerfil, String relator, String tarefaNome, String executor,String tipoTarefa){
+    public void cadastrarTarefa(Perfil relator, Perfil executor, String tarefaNome, String tipoTarefa){
         //Necessário inserir um try-catch para o caso de não serem informados nomes válidos
         
-        if("Administrador".equals(tipoPerfil)&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
+        if("Administrador".equals(relator.getTipoPerfil())&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
             this.tarefaNome=tarefaNome;
-                
+        //Criar método que chama o objeto PERFIL e então obtém dele os dados   
             tarefaRelator=relator;
             tarefaExecutor=executor;
             
@@ -80,20 +91,20 @@ public class Tarefa {
                 //Informar erro
                 JOptionPane.showMessageDialog(null, "Este não é um tipo de tarefa válido!");
             }
-
+            
             cadastrada=true;
         } else {
             JOptionPane.showMessageDialog(null, "Perfil não autorizado!");
         }  
     }
-    
+        
     public void descreverTarefa(String descricao){
         tarefaDescricao=descricao;
     }
     
     public void iniciarTarefa(LocalDate inicio, int prazoDias){
         
-        if(cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
+        if("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
             
             tarefaInicio=inicio;
         
@@ -132,7 +143,7 @@ public class Tarefa {
     
     public void concluirTarefa(String solucao, boolean concluida){
         //Rever o atributo de entrada CONCLUIDA
-        if (cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
+        if ("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
         //Adiconar uma condicão para CONCLUIDA
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
@@ -152,7 +163,7 @@ public class Tarefa {
     
     public boolean descartarTarefa(boolean descarta){
         //Adicionar condição para DESCARTADA
-        if(cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
+        if("Usuario".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
             emAndamento=false;
             return descartada = true;
         } else {
