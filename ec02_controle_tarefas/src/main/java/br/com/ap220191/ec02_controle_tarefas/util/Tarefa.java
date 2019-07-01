@@ -128,8 +128,8 @@ no método cadastrar*/
                 //Informar erro
                 JOptionPane.showMessageDialog(null, "Esta data antecede o dia de hoje! Entre com outra!");
 
-            } else {
-                if((prazoDias%30)==0){
+            } else if((prazoDias%30)==0){ 
+                
                 mes = prazoDias/30;
 
                 tarefaConclusaoPrevista=inicio.plusMonths(mes);
@@ -146,13 +146,13 @@ no método cadastrar*/
 
             iniciada = true;
             emAndamento=true;
-            }
         } else {
             //Informar erro
-                JOptionPane.showMessageDialog(null, "Esta tarefa não possui cadastro!");
+            JOptionPane.showMessageDialog(null, "Esta tarefa já foi iniciada!");
+            }
         }
         
-    }
+    
     
     public void concluirTarefa(String solucao, boolean concluida){
         /*Rever o atributo de entrada CONCLUIDA*/
@@ -219,6 +219,9 @@ no método cadastrar*/
         return tarefaSolucao;
     }
     
-    
+    @Override
+    public String toString(){
+        return ""+tarefaEstado();
+    }
     
 }
