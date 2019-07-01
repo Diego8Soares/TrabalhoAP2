@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  */
 public class Tarefa {
     
-    private boolean cadastrada=false;
-    private boolean iniciada=false;
-    private boolean concluida=false;
-    private boolean descartada=false;
+    private boolean cadastrada= false;
+    private boolean iniciada  = false;
+    private boolean concluida = false;
+    private boolean descartada= false;
     private boolean emAndamento=false;
-    private boolean prioridade=false;
+    private boolean prioridade= false;
     
     private String tarefaNome;
 /*Defeito - prioridade 1 (TRUE)
@@ -99,9 +99,9 @@ no método cadastrar*/
             
             tarefaTipo = tipoTarefa;
             
-            if("Defeito".equals(tarefaTipo)){
+            if("DEFEITO".equals(tarefaTipo)){
                 prioridade = true;
-            } else if("Melhoria".equals(tarefaTipo)) {
+            } else if("MELHORIA".equals(tarefaTipo)) {
                 prioridade=false;
             } else {
                 //Informar erro
@@ -197,7 +197,8 @@ no método cadastrar*/
     public String getTarefaNome() {
         return tarefaNome;
     }
-
+    
+    //Útil para coletar informações do funcionário
     public Perfil getTarefaRelator() {
         return tarefaRelator;
     }
