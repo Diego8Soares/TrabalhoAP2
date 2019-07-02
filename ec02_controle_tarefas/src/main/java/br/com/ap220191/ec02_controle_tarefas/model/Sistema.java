@@ -19,6 +19,8 @@ public class Sistema extends javax.swing.JFrame {
     Perfil perfil;
     Tarefa tarefa;
     
+    private int ii=0;
+    
     ArrayList<Perfil> perfis = new ArrayList<>();
     ArrayList<Tarefa> tarefas = new ArrayList<>();
     
@@ -84,7 +86,7 @@ public class Sistema extends javax.swing.JFrame {
         txtINICIOtarefa = new javax.swing.JTextField();
         txtPrazoTAREFA = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        mostraEstado = new javax.swing.JComboBox<>();
+        jcbMostraEstado = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -296,13 +298,13 @@ public class Sistema extends javax.swing.JFrame {
                                     .addComponent(txtPrazoTAREFA)
                                     .addComponent(txtINICIOtarefa)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jcbTarefaparaIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jcbTarefaparaIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(mostraEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jcbMostraEstado, 0, 120, Short.MAX_VALUE))
                                 .addGap(35, 35, 35))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
@@ -353,7 +355,7 @@ public class Sistema extends javax.swing.JFrame {
                             .addComponent(jLabel15)
                             .addComponent(txtPrazoTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbMostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(jButton6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -374,21 +376,21 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(232, Short.MAX_VALUE))
         );
 
@@ -409,6 +411,14 @@ public class Sistema extends javax.swing.JFrame {
                this.jcbEXECUTOR.addItem(perfil.getNomeUsuario());
            }
         
+        DefaultTableModel dtmPERFIL = (DefaultTableModel) tabelaPERFIL.getModel();
+        
+        //for(int i=0;i<perfis.size();i++){
+            Object [] dados  = {perfis.get(ii).getNomeUsuario(), perfis.get(ii).getTipoPerfil(), perfis.get(ii).getCargo(),perfis.get(ii).getSetorTrabalho()};
+        
+            dtmPERFIL.addRow(dados);
+        //}
+        ii++;
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void txtNOMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOMEActionPerformed
@@ -420,7 +430,6 @@ public class Sistema extends javax.swing.JFrame {
         /*MostrarPerfil tabelaPerfil = new MostrarPerfil(this,true);
         
         tabelaPerfil.setVisible(true);
-        
         
         tabelaPerfil.recebeArray(perfis);*/
         DefaultTableModel dtmPERFIL = (DefaultTableModel) tabelaPERFIL.getModel();
@@ -462,10 +471,7 @@ public class Sistema extends javax.swing.JFrame {
         
         tarefas.add(tarefa);
         
-        //if("Administrador".equals(perfil.getTipoPerfil())){
                this.jcbTarefaparaIniciar.addItem(tarefa.getTarefaNome());
-           //}
-// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -488,7 +494,7 @@ public class Sistema extends javax.swing.JFrame {
             }
         for (int j=0;j<tarefas.size();j++){  
             if(tarefas.get(i).tarefaEstado()){
-                mostraEstado.addItem(tarefas.get(i).toString());
+                jcbMostraEstado.addItem(tarefas.get(i).toString());
             }
         
         }  
@@ -557,11 +563,11 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jcbEXECUTOR;
+    private javax.swing.JComboBox<String> jcbMostraEstado;
     private javax.swing.JComboBox<String> jcbRELATOR;
     private javax.swing.JComboBox<String> jcbTIPO;
     private javax.swing.JComboBox<String> jcbTIPOPerfil;
     private javax.swing.JComboBox<String> jcbTarefaparaIniciar;
-    private javax.swing.JComboBox<String> mostraEstado;
     private javax.swing.JTable tabelaPERFIL;
     private javax.swing.JTable tabelaTAREFAS;
     private javax.swing.JTextField txtCARGO;

@@ -36,9 +36,9 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,13 +47,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" pref="272" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="238" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="232" max="32767" attributes="0"/>
           </Group>
@@ -310,7 +310,7 @@
                                       <Component id="txtPrazoTAREFA" max="32767" attributes="0"/>
                                       <Component id="txtINICIOtarefa" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jcbTarefaparaIniciar" min="-2" pref="72" max="-2" attributes="0"/>
+                                          <Component id="jcbTarefaparaIniciar" min="-2" pref="120" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -319,7 +319,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jButton6" max="32767" attributes="0"/>
-                                      <Component id="mostraEstado" max="32767" attributes="0"/>
+                                      <Component id="jcbMostraEstado" pref="120" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
@@ -387,7 +387,7 @@
                               <Component id="txtPrazoTAREFA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="mostraEstado" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbMostraEstado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -548,7 +548,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="mostraEstado">
+        <Component class="javax.swing.JComboBox" name="jcbMostraEstado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>

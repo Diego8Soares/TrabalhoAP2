@@ -221,7 +221,7 @@ no método cadastrar*/
     
     @Override
     public String toString(){
-        return ""+tarefaEstado();
+        return ""+mes;
     }
     
 }
