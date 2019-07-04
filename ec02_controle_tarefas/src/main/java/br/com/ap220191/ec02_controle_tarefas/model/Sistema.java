@@ -65,7 +65,6 @@ public class Sistema extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaPERFIL = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -94,6 +93,14 @@ public class Sistema extends javax.swing.JFrame {
         txtTarefaSOLUCAO = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         mostraTAREFASconcluidas = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jcbTarefaparaDESCARTAR = new javax.swing.JComboBox<>();
+        descartarTAREFA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE CONTROLE DE TAREFAS");
@@ -199,7 +206,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addComponent(mostraPERFIS)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(limpaTabelaPERFIS)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tabelaPERFIL.setModel(new javax.swing.table.DefaultTableModel(
@@ -211,8 +218,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tabelaPERFIL);
-
-        jLabel6.setText("Campo Tarefa");
 
         jLabel7.setText("RELATOR:");
 
@@ -282,12 +287,37 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
+        txtTarefaSOLUCAO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarefaSOLUCAOActionPerformed(evt);
+            }
+        });
+
         jLabel16.setText("SOLUÇÃO:");
 
         mostraTAREFASconcluidas.setText("MOSTRAR");
         mostraTAREFASconcluidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostraTAREFASconcluidasActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("TAREFA:");
+
+        jLabel18.setText("DESCARTAR");
+
+        jLabel19.setText("CONCLUIR");
+
+        jLabel20.setText("INICIAR");
+
+        jLabel21.setText("CADASTRAR");
+
+        jLabel6.setText("CAMPO TAREFA");
+
+        descartarTAREFA.setText("DESCARTAR");
+        descartarTAREFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descartarTAREFAActionPerformed(evt);
             }
         });
 
@@ -298,130 +328,208 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNOMEtarefa)
-                            .addComponent(jcbEXECUTOR, 0, 64, Short.MAX_VALUE)
-                            .addComponent(jcbRELATOR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcbTIPO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtNOMEtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cadastraTAREFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(mostraNomeTAREFAS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addComponent(jcbTIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jcbEXECUTOR, 0, 70, Short.MAX_VALUE)
+                                    .addComponent(jcbRELATOR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cadastraTAREFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mostraNomeTAREFAS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel21)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jcbMostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtINICIOtarefa, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbTarefaparaINICIAR, javax.swing.GroupLayout.Alignment.LEADING, 0, 139, Short.MAX_VALUE)
-                                    .addComponent(txtPrazoTAREFA))
-                                .addGap(27, 27, 27)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel16)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addGap(96, 96, 96))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                    .addGap(6, 6, 6)
+                                                    .addComponent(iniciaTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(jLabel6))
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jcbTarefaparaINICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addGap(14, 14, 14)
+                                                                .addComponent(jLabel20))))
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel13))))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtINICIOtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPrazoTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel16))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtTarefaSOLUCAO)
+                                            .addComponent(jcbTarefaparaCONCLUIR, 0, 120, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel19)
+                                                .addGap(91, 91, 91))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(mostraTAREFASconcluidas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(concluiTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jcbMostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(iniciaTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbTarefaparaCONCLUIR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTarefaSOLUCAO)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(mostraTAREFASconcluidas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(concluiTAREFA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))))
-                .addGap(103, 103, 103))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel6)
-                .addGap(195, 195, 195))
+                                .addGap(191, 191, 191)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jcbTarefaparaDESCARTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(descartarTAREFA)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jcbRELATOR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcbEXECUTOR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtNOMEtarefa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcbTIPO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtDESCRICAO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cadastraTAREFA)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mostraNomeTAREFAS)
+                                .addGap(24, 24, 24))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jcbRELATOR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jcbEXECUTOR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtNOMEtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jcbTIPO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtDESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cadastraTAREFA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mostraNomeTAREFAS))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jcbTarefaparaINICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)
-                            .addComponent(jcbTarefaparaCONCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(txtINICIOtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(txtPrazoTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel20)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(73, 73, 73)
+                                        .addComponent(jcbMostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel12)
+                                                .addGap(10, 10, 10))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jcbTarefaparaINICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtINICIOtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel15)
+                                            .addComponent(txtPrazoTAREFA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(iniciaTAREFA))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jcbTarefaparaCONCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(3, 3, 3)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtTarefaSOLUCAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbMostraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                                    .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(concluiTAREFA)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mostraTAREFASconcluidas)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(2, 2, 2)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iniciaTAREFA)
-                            .addComponent(concluiTAREFA))
+                            .addComponent(jLabel17)
+                            .addComponent(jcbTarefaparaDESCARTAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mostraTAREFASconcluidas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(descartarTAREFA)
+                        .addGap(41, 41, 41))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -432,19 +540,20 @@ public class Sistema extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(232, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         pack();
@@ -504,74 +613,71 @@ public class Sistema extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_limpaTabelaPERFISActionPerformed
 
-    private void txtNOMEtarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOMEtarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNOMEtarefaActionPerformed
+    private void mostraTAREFASconcluidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraTAREFASconcluidasActionPerformed
 
-    private void cadastraTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraTAREFAActionPerformed
-        Perfil p1 =new Perfil();
-        Perfil p2 =new Perfil();
-        
-        tarefa = new Tarefa();
-        
-        int count1=0, count2=0;
-        
-        for(int i=0;i<perfis.size();i++){
-            if(perfis.get(i).getNomeUsuario()==this.jcbRELATOR.getSelectedItem()){
-                p1 = perfis.get(i);
-                count1 = i;
+        for(int i=0; i<tarefas.size();i++){
+            if(tarefas.get(i).isConcluida()){
+                JOptionPane.showMessageDialog(null,"Tarefa: "+tarefas.get(i).getTarefaNome());
             }
-            if(perfis.get(i).getNomeUsuario()==this.jcbEXECUTOR.getSelectedItem()){
-                p2 = perfis.get(i);
-                count2 = i;
-            }
-        }      
-        
-        //Cria o objeto TAREFA
-        tarefa.cadastrarTarefa(p1, p2, txtNOMEtarefa.getText(),jcbTIPO.getSelectedItem().toString());
-        
-        //Vincula a tarefa criada ao RELATOR e ao EXECUTOR
-        perfis.get(count1).adicionarTarefa(tarefa); 
-        perfis.get(count2).adicionarTarefa(tarefa);
-        
-        //Cria a lista de tarefas do sistema
-        tarefas.add(tarefa);
-        
-        //Cria a DASHboard de tarefas a serem INICIADAS
-        this.jcbTarefaparaINICIAR.addItem(tarefa.getTarefaNome());
-        
-        
-    }//GEN-LAST:event_cadastraTAREFAActionPerformed
-
-    private void mostraNomeTAREFASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraNomeTAREFASActionPerformed
-        DefaultTableModel dtmTAREFA = (DefaultTableModel) tabelaTAREFAS.getModel();
-        
-        for(int i=0;i<tarefas.size();i++){
-            Object [] dados  = {tarefas.get(i).getTarefaNome()};//, perfis.get(i).getTipoPerfil(), perfis.get(i).getCargo(),perfis.get(i).getSetorTrabalho()};
-        
-            dtmTAREFA.addRow(dados);
         }
-    }//GEN-LAST:event_mostraNomeTAREFASActionPerformed
+    }//GEN-LAST:event_mostraTAREFASconcluidasActionPerformed
+
+    private void txtTarefaSOLUCAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarefaSOLUCAOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarefaSOLUCAOActionPerformed
+
+    private void concluiTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concluiTAREFAActionPerformed
+        int count4 = 0;
+
+        String nome3 = null;
+        String nome4 = null;
+
+        for(int i=0;i<tarefas.size();i++){
+            if(tarefas.get(i).getTarefaNome()==this.jcbTarefaparaCONCLUIR.getSelectedItem()){
+                tarefas.get(i).concluirTarefa(txtTarefaSOLUCAO.getText(), true); //selecionar dados no txt de inicio e converter para date
+                nome3=tarefas.get(i).getTarefaRelator().getNomeUsuario();
+                nome4=tarefas.get(i).getTarefaExecutor().getNomeUsuario();
+
+                count4=i;
+            }
+        }
+
+        for(int j=0;j<perfis.size();j++){
+            if(nome3==perfis.get(j).getNomeUsuario()){
+                perfis.get(j).adicionarTarefa(tarefas.get(count4));
+            }
+            if(nome4==perfis.get(j).getNomeUsuario()){
+                perfis.get(j).adicionarTarefa(tarefas.get(count4));
+            }
+
+            //Incluir comandos para Projetos
+        }
+
+    }//GEN-LAST:event_concluiTAREFAActionPerformed
+
+    private void jcbTarefaparaCONCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTarefaparaCONCLUIRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTarefaparaCONCLUIRActionPerformed
 
     private void iniciaTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciaTAREFAActionPerformed
 
         int prazo = Integer.parseInt(txtPrazoTAREFA.getText());
-        
+
         int count3 = 0;
-        
+
         String nome1 = null;
         String nome2 = null;
-        
+
         for(int i=0;i<tarefas.size();i++){
             if(tarefas.get(i).getTarefaNome()==this.jcbTarefaparaINICIAR.getSelectedItem()){
                 tarefas.get(i).iniciarTarefa(LocalDate.now(), prazo); //selecionar dados no txt de inicio e converter para date
                 nome1=tarefas.get(i).getTarefaRelator().getNomeUsuario();//Perfil(i).getNomeUsuario();
                 nome2=tarefas.get(i).getTarefaExecutor().getNomeUsuario();
-                
+
                 count3=i;
             }
         }
-            
+
         for(int j=0;j<perfis.size();j++){
             if(nome1==perfis.get(j).getNomeUsuario()){
                 perfis.get(j).adicionarTarefa(tarefas.get(count3));
@@ -582,63 +688,95 @@ public class Sistema extends javax.swing.JFrame {
         }
         //Cria a DASHboard de tarefas a serem CONCLUÍDAS
         this.jcbTarefaparaCONCLUIR.addItem(tarefas.get(count3).getTarefaNome());
-            
-            //Apenas para teste... Provável de apagar
-        for (int j=0;j<tarefas.size();j++){  
+        
+        //Cria a DASHboard de tarefas a serem DESCARTAR
+        this.jcbTarefaparaDESCARTAR.addItem(tarefas.get(count3).getTarefaNome());
+
+        //Apenas para teste... Provável de apagar
+        for (int j=0;j<tarefas.size();j++){
             if(tarefas.get(j).tarefaEstado()){
                 jcbMostraEstado.addItem(tarefas.get(j).toString());
             }
         }
-        
+
         /*if(txtPrazoTAREFA.getText()==null||txtINICIOtarefa.getText()==null){
             JOptionPane.showMessageDialog(null, "Informe todos os parâmetros");
         }*/
-        
-            
     }//GEN-LAST:event_iniciaTAREFAActionPerformed
 
-    private void concluiTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concluiTAREFAActionPerformed
-        int count4 = 0;
-        
-        String nome3 = null;
-        String nome4 = null;
-        
+    private void mostraNomeTAREFASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraNomeTAREFASActionPerformed
+        DefaultTableModel dtmTAREFA = (DefaultTableModel) tabelaTAREFAS.getModel();
+
         for(int i=0;i<tarefas.size();i++){
-            if(tarefas.get(i).getTarefaNome()==this.jcbTarefaparaCONCLUIR.getSelectedItem()){
-                tarefas.get(i).concluirTarefa(txtTarefaSOLUCAO.getText(), true); //selecionar dados no txt de inicio e converter para date
-                nome3=tarefas.get(i).getTarefaRelator().getNomeUsuario();
-                nome4=tarefas.get(i).getTarefaExecutor().getNomeUsuario();
-                
-                count4=i;
-            }
-        }
-            
-        for(int j=0;j<perfis.size();j++){
-            if(nome3==perfis.get(j).getNomeUsuario()){
-                perfis.get(j).adicionarTarefa(tarefas.get(count4));
-            }
-            if(nome4==perfis.get(j).getNomeUsuario()){
-                perfis.get(j).adicionarTarefa(tarefas.get(count4));
-            }
-            
-            //Incluir comandos para Projetos
-        }
-        
-        
-    }//GEN-LAST:event_concluiTAREFAActionPerformed
+            Object [] dados  = {tarefas.get(i).getTarefaNome()};//, perfis.get(i).getTipoPerfil(), perfis.get(i).getCargo(),perfis.get(i).getSetorTrabalho()};
 
-    private void jcbTarefaparaCONCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTarefaparaCONCLUIRActionPerformed
+        dtmTAREFA.addRow(dados);
+        }
+    }//GEN-LAST:event_mostraNomeTAREFASActionPerformed
+
+    private void cadastraTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraTAREFAActionPerformed
+        Perfil p1 =new Perfil();
+        Perfil p2 =new Perfil();
+
+        tarefa = new Tarefa();
+
+        int count1=0, count2=0;
+
+        for(int i=0;i<perfis.size();i++){
+            if(perfis.get(i).getNomeUsuario()==this.jcbRELATOR.getSelectedItem()){
+                p1 = perfis.get(i);
+                count1 = i;
+            }
+            if(perfis.get(i).getNomeUsuario()==this.jcbEXECUTOR.getSelectedItem()){
+                p2 = perfis.get(i);
+                count2 = i;
+            }
+        }
+
+        //Cria o objeto TAREFA
+        tarefa.cadastrarTarefa(p1, p2, txtNOMEtarefa.getText(),jcbTIPO.getSelectedItem().toString());
+
+        //Vincula a tarefa criada ao RELATOR e ao EXECUTOR
+        perfis.get(count1).adicionarTarefa(tarefa);
+        perfis.get(count2).adicionarTarefa(tarefa);
+
+        //Cria a lista de tarefas do sistema
+        tarefas.add(tarefa);
+
+        //Cria a DASHboard de tarefas a serem INICIADAS
+        this.jcbTarefaparaINICIAR.addItem(tarefa.getTarefaNome());
+
+    }//GEN-LAST:event_cadastraTAREFAActionPerformed
+
+    private void txtNOMEtarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOMEtarefaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbTarefaparaCONCLUIRActionPerformed
+    }//GEN-LAST:event_txtNOMEtarefaActionPerformed
 
-    private void mostraTAREFASconcluidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraTAREFASconcluidasActionPerformed
-        
-        for(int i=0; i<tarefas.size();i++){
-            if(tarefas.get(i).isConcluida()){
-                JOptionPane.showMessageDialog(null,"Tarefa: "+tarefas.get(i).getTarefaNome());
+    private void descartarTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartarTAREFAActionPerformed
+        int count5 = 0;
+
+        String nome5 = null;
+        String nome6 = null;
+
+        for(int i=0;i<tarefas.size();i++){
+            if(tarefas.get(i).getTarefaNome()==this.jcbTarefaparaDESCARTAR.getSelectedItem()){
+                tarefas.get(i).descartarTarefa(true); //selecionar dados no txt de inicio e converter para date
+                nome5=tarefas.get(i).getTarefaRelator().getNomeUsuario();//Perfil(i).getNomeUsuario();
+                nome6=tarefas.get(i).getTarefaExecutor().getNomeUsuario();
+
+                count5=i;
             }
         }
-    }//GEN-LAST:event_mostraTAREFASconcluidasActionPerformed
+
+        for(int j=0;j<perfis.size();j++){
+            if(nome5==perfis.get(j).getNomeUsuario()){
+                perfis.get(j).adicionarTarefa(tarefas.get(count5));
+            }
+            if(nome6==perfis.get(j).getNomeUsuario()){
+                perfis.get(j).adicionarTarefa(tarefas.get(count5));
+            }
+        }
+    }//GEN-LAST:event_descartarTAREFAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -679,6 +817,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton cadastraTAREFA;
     private javax.swing.JButton concluiTAREFA;
     private javax.swing.JButton criaPERFIL;
+    private javax.swing.JButton descartarTAREFA;
     private javax.swing.JButton iniciaTAREFA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -688,7 +827,12 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -706,6 +850,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbTIPO;
     private javax.swing.JComboBox<String> jcbTIPOPerfil;
     private javax.swing.JComboBox<String> jcbTarefaparaCONCLUIR;
+    private javax.swing.JComboBox<String> jcbTarefaparaDESCARTAR;
     private javax.swing.JComboBox<String> jcbTarefaparaINICIAR;
     private javax.swing.JButton limpaTabelaPERFIS;
     private javax.swing.JButton mostraNomeTAREFAS;
