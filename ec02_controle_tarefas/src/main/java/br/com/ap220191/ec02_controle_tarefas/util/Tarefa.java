@@ -64,8 +64,8 @@ no método cadastrar*/
     public int quantidadePerfis(){
         return perfisTarefa.size();
     }
-    public void getPerfil(int posicao){
-        perfisTarefa.get(posicao);
+    public Perfil getPerfil(int posicao){
+        return perfisTarefa.get(posicao);
     }
     public Perfil getPerfisTarefa(int posicao) {
         return perfisTarefa.get(posicao);
@@ -143,9 +143,11 @@ no método cadastrar*/
                 tarefaConclusaoPrevista=inicio.plusDays(dias);
                 tarefaConclusaoPrevista=tarefaConclusaoPrevista.plusMonths(mes);            
             }
-
             iniciada = true;
             emAndamento=true;
+        } else if(concluida){
+            //Informar erro
+            JOptionPane.showMessageDialog(null, "Esta tarefa já foi concluída!");
         } else {
             //Informar erro
             JOptionPane.showMessageDialog(null, "Esta tarefa já foi iniciada!");
@@ -168,6 +170,7 @@ no método cadastrar*/
         
         this.concluida = true;
         emAndamento=false;
+        iniciada=false;
         
         } else {
             this.concluida = false;
@@ -218,6 +221,12 @@ no método cadastrar*/
     public String getTarefaSolucao() {
         return tarefaSolucao;
     }
+
+    public boolean isConcluida() {
+        return concluida;
+    }
+    
+    
     
     @Override
     public String toString(){
