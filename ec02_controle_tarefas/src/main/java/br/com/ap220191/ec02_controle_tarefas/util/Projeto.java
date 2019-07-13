@@ -44,8 +44,6 @@ public class Projeto {
         perfisProjeto  = new ArrayList<Perfil>();
     }
     
-    
-    
     public void adicionarTarefa(Tarefa tarefa){
         tarefasProjeto.add(tarefa);
     }
@@ -55,7 +53,6 @@ public class Projeto {
     public Tarefa getTarefas(int posicao){
         return tarefasProjeto.get(posicao);
     }
-    
     
     
     public void adicionarPerfil(Perfil perfil){
@@ -70,32 +67,26 @@ public class Projeto {
     
     
     
-    public void criarProjeto(String nome, boolean projetoOUtarefa ){
+    public void criarProjeto(String nome){
         
-        if(iniciado==false&&concluido==false&&andamento==false&&projetoOUtarefa){
+        if(iniciado==false&&concluido==false&&andamento==false)
+        {
             projNome = nome;
             
             projFase = "Criado!";
-        }
-        
-        if(iniciado==false&&concluido==false&&andamento==false&&projetoOUtarefa==false){
-            projNome = "Tarefa simples";
-            
-            projFase = "Criado!";
-        }
-        
-        this.projeto = projetoOUtarefa;
-        //Se FALSE: impedir de gerar tarefas (Sistema)   
+        }   
     }
     
-    public void iniciarProjeto(LocalDate start,int prazoDias){
-    //Para os casos de ser uma TAREFA SIMPLES, chama o método de iniciar tarefa
-        if(iniciado==false&&concluido==false&&andamento==false&&projeto){
+    public void iniciarProjeto(LocalDate start,int prazoDias)
+    {
+        if(iniciado==false&&concluido==false&&andamento==false&&projeto)
+        {
             projInicio = start;
             
             iniciado = true;
             
-            if(projInicio.isBefore(hoje)){
+            if(projInicio.isBefore(hoje))
+            {
                 //Informar erro
                 JOptionPane.showMessageDialog(null, "Esta data antecede o dia de hoje! Entre com outra!");
 
@@ -104,8 +95,8 @@ public class Projeto {
                 mes = prazoDias/30;
 
                 projConclusaoPrevista=start.plusMonths(mes);
-                } else if ((prazoDias/30)<1) {
-
+                } else if ((prazoDias/30)<1)
+                {
                 projConclusaoPrevista=start.plusDays(prazoDias);
                 } else {
                 mes = (prazoDias - prazoDias%30)/30;
@@ -131,7 +122,7 @@ public class Projeto {
     
     public void concluirProjeto(boolean concluir){
         //Rever o atributo de entrada CONCLUIDA
-        if (iniciado&&concluir&&andamento&&projeto){            
+        if (iniciado&&concluir&&andamento){            
         //Adiconar uma condicão para CONCLUIDA
         
         projConclusao=LocalDate.now();

@@ -27,14 +27,27 @@ public class Perfil {
     }
     
     
-    public void adicionarTarefa(Tarefa tarefa){
+    public void adicionarTarefa(Tarefa tarefa)
+    {
         tarefasPerfil.add(tarefa);
     }
-    public int quantidadeTarefas(){
+    public int quantidadeTarefas()
+    {
         return tarefasPerfil.size();
     }
-    public Tarefa getTarefasPerfil(int posicao) {
+    public Tarefa getTarefasPerfil(int posicao)
+    {
         return tarefasPerfil.get(posicao);
+    }
+    
+    public void atualizaTarefa(int posicao, Tarefa tarefa)
+    {
+        tarefasPerfil.set(posicao,tarefa);
+    }
+    
+    public void atualizaProjeto(int posicao, Projeto projeto)
+    {
+        projetosPerfil.set(posicao,projeto);
     }
     
     

@@ -48,7 +48,7 @@ public class Teste {
         tf.setProjetoVinculadaNome(prj);
         
         prj.adicionarTarefa(tf);
-        prj.criarProjeto("Banda", true);
+        prj.criarProjeto("Banda");
         
         prj.adicionarPerfil(p1);
         prj.adicionarPerfil(p2);

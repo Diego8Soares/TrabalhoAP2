@@ -64,12 +64,10 @@ no método cadastrar*/
     public int quantidadePerfis(){
         return perfisTarefa.size();
     }
-    public Perfil getPerfil(int posicao){
-        return perfisTarefa.get(posicao);
-    }
     public Perfil getPerfisTarefa(int posicao) {
         return perfisTarefa.get(posicao);
     }
+    
     
     
     
