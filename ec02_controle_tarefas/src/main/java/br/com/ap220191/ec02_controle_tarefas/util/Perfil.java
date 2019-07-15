@@ -18,16 +18,16 @@ public class Perfil {
     private String cargo;
     private String setorTrabalho;
     
-    private ArrayList<Tarefa> tarefasPerfil;
-    private ArrayList<Projeto> projetosPerfil;
+    private ArrayList<Tarefa> tarefasPerfil; // 14/07 - Excluir
+    private ArrayList<Projeto> projetosPerfil; // Excluir
     
     public Perfil(){
-        tarefasPerfil  = new ArrayList<Tarefa>();
-        projetosPerfil = new ArrayList<Projeto>();
+        tarefasPerfil  = new ArrayList<Tarefa>(); // Excluir
+        projetosPerfil = new ArrayList<Projeto>();  // Excluir
     }
     
     
-    public void adicionarTarefa(Tarefa tarefa)
+    public void adicionarTarefa(Tarefa tarefa)  // Excluir
     {
         tarefasPerfil.add(tarefa);
     }
@@ -58,7 +58,7 @@ public class Perfil {
     public int quantidadeProjetos(){
         return projetosPerfil.size();
     }public Projeto getProjetosPerfil(int posicao) {
-        return projetosPerfil.get(posicao);
+        return projetosPerfil.get(posicao); // Excluir
     }
       
   

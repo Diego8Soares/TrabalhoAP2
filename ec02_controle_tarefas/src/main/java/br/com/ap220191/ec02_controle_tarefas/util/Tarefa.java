@@ -22,11 +22,12 @@ public class Tarefa {
     private boolean descartada= false;
     private boolean emAndamento=false;
     private boolean prioridade= false;
+    /*Defeito - prioridade 1 (TRUE)
+    Melhoria - Prioridade 2 (FALSE) */
     
     private String tarefaNome;
-/*Defeito - prioridade 1 (TRUE)
- Melhoria - Prioridade 2 (FALSE) */
-    private String tarefaTipo; 
+    private String tarefaTipo;
+    private String estado; 
     
     private LocalDate   tarefaInicio;
     private LocalDate   tarefaConclusaoPrevista;
@@ -44,12 +45,11 @@ public class Tarefa {
     private Perfil tarefaRelator;
     private Perfil tarefaExecutor;
     
+    //Excluir
     private ArrayList<Perfil> perfisTarefa;
     
-    private Projeto projetoVinculadaNome;
+    private Projeto projetoVinculadoNome;
         
-    
-    
     public Tarefa(){
         perfisTarefa = new ArrayList<Perfil>();
     }
@@ -68,38 +68,40 @@ no método cadastrar*/
         return perfisTarefa.get(posicao);
     }
     
-    
-    
-    
-    public void setProjetoVinculadaNome(Projeto projetoVinculada) {
-        this.projetoVinculadaNome = projetoVinculada;
+    public void atualizaPerfil(int posicao, Perfil perfil)
+    {
+        perfisTarefa.set(posicao, perfil);
     }
-    public Projeto getProjetoVinculadaNome() {
-        return projetoVinculadaNome;
+    
+    
+    public void setProjetoVinculadoNome(Projeto projetoVinculado) {
+        this.projetoVinculadoNome = projetoVinculado;
     }
-
-
-    /* public ArrayList<Perfil> getPerfisTarefa() {
-        return perfisTarefa;
-    }*/
-    
-    
+    public Projeto getProjetoVinculadoNome() {
+        return projetoVinculadoNome;
+    }
     
     //Métodos relacionados às tarefas
     public void cadastrarTarefa(Perfil relator, Perfil executor, String tarefaNome, String tipoTarefa){
         //Necessário inserir um try-catch para o caso de não serem informados nomes válidos
         
-        if("Administrador".equals(relator.getTipoPerfil())&&cadastrada==false&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
+        if("Administrador".equals(relator.getTipoPerfil())&&!cadastrada&&!descartada&&!concluida&&!iniciada&&!emAndamento)
+        {
             this.tarefaNome=tarefaNome;
         //Criar método que chama o objeto PERFIL e então obtém dele os dados   
             tarefaRelator=relator;
             tarefaExecutor=executor;
             
+            perfisTarefa.add(relator);
+            perfisTarefa.add(executor);
+            
             tarefaTipo = tipoTarefa;
             
-            if("DEFEITO".equals(tarefaTipo)){
+            if("DEFEITO".equals(tarefaTipo))
+            {
                 prioridade = true;
-            } else if("MELHORIA".equals(tarefaTipo)) {
+            } else if("MELHORIA".equals(tarefaTipo))
+            {
                 prioridade=false;
             } else {
                 //Informar erro
@@ -107,7 +109,9 @@ no método cadastrar*/
             }
             
             cadastrada=true;
-        } else {
+        }
+        else
+        {
             JOptionPane.showMessageDialog(null, "Perfil não autorizado!");
         }  
     }
@@ -116,25 +120,28 @@ no método cadastrar*/
         tarefaDescricao=descricao;
     }
     
-    public void iniciarTarefa(LocalDate inicio, int prazoDias){
-        
-        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&descartada==false&&concluida==false&&iniciada==false&&emAndamento==false){
-            
+    public void iniciarTarefa(LocalDate inicio, int prazoDias)
+    {
+        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&!iniciada&&!descartada&&!concluida&&!emAndamento)
+        {
             tarefaInicio=inicio;
         
-            if(tarefaInicio.isBefore(hoje)){
+            if(tarefaInicio.isBefore(hoje))
+            {
                 //Informar erro
                 JOptionPane.showMessageDialog(null, "Esta data antecede o dia de hoje! Entre com outra!");
 
-            } else if((prazoDias%30)==0){ 
-                
+            } else if((prazoDias%30)==0)
+            { 
                 mes = prazoDias/30;
 
                 tarefaConclusaoPrevista=inicio.plusMonths(mes);
-                } else if ((prazoDias/30)<1) {
-
+                } else if ((prazoDias/30)<1)
+                {
                 tarefaConclusaoPrevista=inicio.plusDays(prazoDias);
+                
                 } else {
+                    
                 mes = (prazoDias - prazoDias%30)/30;
                 dias=prazoDias%30;
 
@@ -149,14 +156,14 @@ no método cadastrar*/
         } else {
             //Informar erro
             JOptionPane.showMessageDialog(null, "Esta tarefa já foi iniciada!");
-            }
         }
+    }
         
-    
     
     public void concluirTarefa(String solucao, boolean concluida){
         /*Rever o atributo de entrada CONCLUIDA*/
-        if ("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada==true&&iniciada==true&&descartada==false&&concluida==true&&emAndamento==true){            
+        if ("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&!descartada&&concluida&&emAndamento)
+        {            
         //Adiconar uma condicão para CONCLUIDA
         //tarefaConclusao= hoje.minus();
         tarefaSolucao=solucao;
@@ -168,7 +175,6 @@ no método cadastrar*/
         
         this.concluida = true;
         emAndamento=false;
-        iniciada=false;
         
         } else {
             this.concluida = false;
@@ -177,9 +183,11 @@ no método cadastrar*/
     
     public boolean descartarTarefa(boolean descarta){
         //Adicionar condição para DESCARTADA
-        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&concluida==false&&descarta&&emAndamento){
+        if("Usuário".equals(tarefaExecutor.getTipoPerfil())&&cadastrada&&iniciada&&!concluida&&descarta&&emAndamento)
+        {
             emAndamento=false;
             return descartada = true;
+            
         } else {
             return descartada = false;
         }
@@ -188,12 +196,43 @@ no método cadastrar*/
     }
     
     public boolean tarefaEstado(){
-        if(cadastrada&&iniciada&&concluida==false&&descartada==false){
+        if(cadastrada&&iniciada&&concluida==false&&descartada==false&&emAndamento==false){
            return emAndamento=true;          
         } else {
             return emAndamento=false;
         }       
     }
+
+    public String getEstado()
+    {
+        if(cadastrada&&!iniciada&&!concluida&&!descartada&&!emAndamento)
+        {
+            return estado= "Cadastrada";
+        }
+        if(cadastrada&&iniciada&&!concluida&&!descartada&&!emAndamento)
+        {
+            return estado= "Iniciada";
+        }
+        if(cadastrada&&iniciada&&concluida&&!descartada&&!emAndamento)
+        {
+            return estado= "Concluída";
+        }
+        if(cadastrada&&iniciada&&!concluida&&descartada&&!emAndamento)
+        {
+            return estado= "Descartada";
+        }
+        if(cadastrada&&iniciada&&!concluida&&!descartada&&emAndamento)
+        {
+            return estado= "Em andamento";
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+    
+    
 
     public String getTarefaNome() {
         return tarefaNome;
@@ -225,10 +264,10 @@ no método cadastrar*/
     }
     
     
-    
+    //Passivel de excluir
     @Override
     public String toString(){
-        return ""+mes;
+        return ""+emAndamento;
     }
     
 }

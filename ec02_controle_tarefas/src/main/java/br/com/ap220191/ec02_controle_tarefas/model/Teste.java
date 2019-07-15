@@ -11,6 +11,7 @@ import br.com.ap220191.ec02_controle_tarefas.util.Projeto;
 import br.com.ap220191.ec02_controle_tarefas.util.Tarefa;
 import java.time.LocalDate;
 import java.time.Period;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,7 +46,7 @@ public class Teste {
         
         tf.adicionarPerfil(p1);
         tf.adicionarPerfil(p2);
-        tf.setProjetoVinculadaNome(prj);
+        tf.setProjetoVinculadoNome(prj);
         
         prj.adicionarTarefa(tf);
         prj.criarProjeto("Banda");
@@ -56,7 +57,7 @@ public class Teste {
         prj.adicionarTarefa(tf);
                
         //boolean b=false;
-        
+        /*
         if(tf.tarefaEstado()){
             System.out.println("Tarefa em andamento!\n");
         } else {
@@ -74,7 +75,21 @@ public class Teste {
         
         for(int i=0; i<prj.quantidadePerfis();i++){
             System.out.println(prj.getPerfil(i).getTipoPerfil());
+        }*/
+        String str="";
+        
+        for(int i=0;i<10;i++){
+            if(i%2==0)
+            {
+                str+="nome";
+            }
+            else{
+                str+=",";
+            }
         }
+        
+        
+        JOptionPane.showMessageDialog(null, str);
     }
     
 }

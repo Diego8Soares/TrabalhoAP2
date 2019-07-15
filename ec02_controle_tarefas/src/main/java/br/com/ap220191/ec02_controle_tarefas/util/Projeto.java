@@ -71,7 +71,7 @@ public class Projeto {
         
         if(iniciado==false&&concluido==false&&andamento==false)
         {
-            projNome = nome;
+            projNome = nome.toUpperCase();
             
             projFase = "Criado!";
         }   
@@ -108,7 +108,7 @@ public class Projeto {
 
             iniciado = true;
             
-            projFase = "Início!";
+            projFase = "Iniciado";
             }
         } else {
                 //Informar erro
@@ -149,6 +149,10 @@ public class Projeto {
 
     public String getProjNome() {
         return projNome;
+    }
+
+    public void setProjFase(String projFase) {
+        this.projFase = projFase;
     }
 
     public String getProjFase() {
