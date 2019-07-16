@@ -65,10 +65,9 @@ public class Sistema extends javax.swing.JFrame {
         
         this.jcbESTADOconsulta.addItem("SELECIONE");
         this.jcbESTADOconsulta.addItem("Cadastrada");
-        this.jcbESTADOconsulta.addItem("Iniciada");
+        this.jcbESTADOconsulta.addItem("Em andamento");
         this.jcbESTADOconsulta.addItem("Concluída");
         this.jcbESTADOconsulta.addItem("Descartada");
-        this.jcbESTADOconsulta.addItem("Em andamento");
         
         this.jcbTIPOconsulta.addItem("SELECIONE");
         this.jcbTIPOconsulta.addItem("DEFEITO");
@@ -183,6 +182,7 @@ public class Sistema extends javax.swing.JFrame {
         jcbEXECUTORconsulta = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
         jcbUSUARIOconsulta = new javax.swing.JComboBox<>();
+        btnPROJETOconsulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE CONTROLE DE TAREFAS");
@@ -727,9 +727,9 @@ public class Sistema extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jcbTAREFASprojeto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
+                                .addGap(28, 28, 28)
                                 .addComponent(criaPROJETO)
-                                .addGap(75, 75, 75)
+                                .addGap(77, 77, 77)
                                 .addComponent(ADICIONARtarefaPROJETO)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -829,7 +829,8 @@ public class Sistema extends javax.swing.JFrame {
                                     .addComponent(ADICIONARtarefaPROJETO)
                                     .addComponent(iniciaPROJETO)
                                     .addComponent(concluiPROJETO)
-                                    .addComponent(alteraFASE)))
+                                    .addComponent(alteraFASE)
+                                    .addComponent(criaPROJETO)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -853,7 +854,7 @@ public class Sistema extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(projetoNOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(criaPROJETO)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(21, 21, 21))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -920,16 +921,23 @@ public class Sistema extends javax.swing.JFrame {
 
         jLabel44.setText("Usuário:");
 
+        btnPROJETOconsulta.setText("Consultar");
+        btnPROJETOconsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPROJETOconsultaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbUSUARIOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel38)
@@ -950,42 +958,41 @@ public class Sistema extends javax.swing.JFrame {
                     .addComponent(jcbTIPOconsulta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbESTADOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbEXECUTORconsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPROJETOconsulta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(jcbPROJETOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPROJETOconsulta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbFASEconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbTIPOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel44)
+                        .addComponent(jcbUSUARIOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbESTADOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbRELATORconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel44)
-                            .addComponent(jcbUSUARIOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel38)
-                            .addComponent(jcbPROJETOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbFASEconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel39))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbTIPOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel40))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbESTADOconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbRELATORconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel42))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbEXECUTORconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43))))
+                    .addComponent(jcbEXECUTORconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1195,6 +1202,8 @@ public class Sistema extends javax.swing.JFrame {
                     //Cria o objeto TAREFA
                     tarefa.cadastrarTarefa(p, txtNOMEtarefa.getText(),jcbTIPO.getSelectedItem().toString());
                     
+                    tarefa.descreverTarefa(p, txtDESCRICAO.getText());
+                    
                     if(tarefa.getEstado()=="Cadastrada")
                     {
                         //Cria a lista de tarefas do sistema
@@ -1267,11 +1276,11 @@ public class Sistema extends javax.swing.JFrame {
         
         for(int i=0;i<projetos.size();i++)
         {
-            if(this.jcbPROJETOSadicionarTAREFAS.getSelectedItem()==projetos.get(i).getProjNome())
+            if(String.valueOf(this.jcbPROJETOSadicionarTAREFAS.getSelectedItem())==projetos.get(i).getProjNome())
             {
                 for(int j=0;j<tarefas.size();j++)
                 {
-                    if(this.jcbTAREFASprojeto.getSelectedItem().toString()==tarefas.get(j).getTarefaNome())
+                    if(String.valueOf(this.jcbTAREFASprojeto.getSelectedItem())==tarefas.get(j).getTarefaNome())
                     {
                         //Vincula o PROJETO criado à TAREFA
                         tarefas.get(j).setProjetoVinculado(projetos.get(i));
@@ -1374,17 +1383,13 @@ public class Sistema extends javax.swing.JFrame {
     private void jcbPROJETOconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPROJETOconsultaActionPerformed
         
         Consulta cons = new Consulta();
-        try {
-            for(int i=0; i<perfis.size();i++)
-            {
-                if(perfis.get(i).getNomeUsuario()==this.jcbUSUARIOconsulta.getSelectedItem().toString())
-                {
-                    cons.porPROJETO(perfis.get(i),this.jcbPROJETOconsulta.getSelectedItem().toString(), tarefas);
-                }
-            }
-        } catch (Exception e) 
+            
+        for(int i=0; i<perfis.size();i++)
         {
-            JOptionPane.showMessageDialog(null, "Erro: "+e);
+            if(perfis.get(i).getNomeUsuario()==String.valueOf(this.jcbUSUARIOconsulta.getSelectedItem()))
+            {
+                cons.porPROJETO(perfis.get(i),String.valueOf(this.jcbPROJETOconsulta.getSelectedItem()), tarefas);
+            }
         }
         
     }//GEN-LAST:event_jcbPROJETOconsultaActionPerformed
@@ -1393,18 +1398,12 @@ public class Sistema extends javax.swing.JFrame {
         
         Consulta cons = new Consulta();
         
-        try
+        for(int i=0; i<perfis.size();i++)
         {
-            for(int i=0; i<perfis.size();i++)
+            if(perfis.get(i).getNomeUsuario()==this.jcbUSUARIOconsulta.getSelectedItem().toString())
             {
-                if(perfis.get(i).getNomeUsuario()==this.jcbUSUARIOconsulta.getSelectedItem().toString())
-                {
-                    cons.porFASE(perfis.get(i),this.jcbFASEconsulta.getSelectedItem().toString(), tarefas);
-                }
+                cons.porFASE(perfis.get(i),this.jcbFASEconsulta.getSelectedItem().toString(), tarefas);
             }
-        } catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(null, "Nenhum projeto está nesta etapa!");
         }
         
     }//GEN-LAST:event_jcbFASEconsultaActionPerformed
@@ -1426,27 +1425,29 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbFASEActionPerformed
 
     private void alteraFASEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alteraFASEActionPerformed
-        try {
-            for(int i=0;i<projetos.size();i++)
+        
+        for(int i=0;i<projetos.size();i++)
+        {
+            if(projetos.get(i).getProjNome()==String.valueOf(this.jcbPROJETOfase.getSelectedItem())&&this.jcbFASE.getSelectedItem().toString()!="SELECIONE")
             {
-                if(projetos.get(i).getProjNome()==this.jcbPROJETOfase.getSelectedItem().toString())
-                {
-                    projetos.get(i).setProjFase(this.jcbFASE.getSelectedItem().toString());
+                projetos.get(i).setProjFase(String.valueOf(this.jcbFASE.getSelectedItem()));
 
-                    for(int j=0;j<tarefas.size();j++)
+                for(int j=0;j<tarefas.size();j++)
+                {
+                    try
                     {
                         if(tarefas.get(j).getProjetoVinculado().getProjNome()==projetos.get(i).getProjNome())
                         {
                             tarefas.get(j).setProjetoVinculado(projetos.get(i));
                         }
+                    } catch (Exception e) 
+                    {
+                        
                     }
+                    
                 }
             }
-        } catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Erro:"+e);
         }
-        
     }//GEN-LAST:event_alteraFASEActionPerformed
 
     private void txtPrazoTAREFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrazoTAREFAActionPerformed
@@ -1456,60 +1457,52 @@ public class Sistema extends javax.swing.JFrame {
     private void jcbRELATORconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRELATORconsultaActionPerformed
         Consulta cons = new Consulta();
         
-        try 
+        for(int i=0; i<perfis.size();i++)
         {
-            for(int i=0; i<perfis.size();i++)
+            if(perfis.get(i).getNomeUsuario()==this.jcbUSUARIOconsulta.getSelectedItem().toString())
             {
-                if(perfis.get(i).getNomeUsuario()==this.jcbRELATORconsulta.getSelectedItem().toString())
-                {
-                    cons.porRELATOR(perfis.get(i),this.jcbRELATORconsulta.getSelectedItem().toString(), tarefas);
-                }
+                cons.porRELATOR(perfis.get(i),this.jcbRELATORconsulta.getSelectedItem().toString(), tarefas);
             }
-        } catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(null, "Erro:"+e);
         }
-            
-        
     }//GEN-LAST:event_jcbRELATORconsultaActionPerformed
 
     private void jcbEXECUTORconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEXECUTORconsultaActionPerformed
         Consulta cons = new Consulta();
         
-        try 
+       
+        for(int i=0; i<perfis.size();i++)
         {
-            for(int i=0; i<perfis.size();i++)
+            if(perfis.get(i).getNomeUsuario()==this.jcbUSUARIOconsulta.getSelectedItem().toString())
             {
-                if(perfis.get(i).getNomeUsuario()==this.jcbEXECUTORconsulta.getSelectedItem().toString())
-                {
-                    cons.porRELATOR(perfis.get(i),this.jcbEXECUTORconsulta.getSelectedItem().toString(), tarefas);
-                }
+                cons.porEXECUTOR(perfis.get(i),this.jcbEXECUTORconsulta.getSelectedItem().toString(), tarefas);
             }
-        } catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Erro:"+e);
         }
-        
-        
     }//GEN-LAST:event_jcbEXECUTORconsultaActionPerformed
 
     private void jcbESTADOconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbESTADOconsultaActionPerformed
         Consulta cons = new Consulta();
         
-        try {
-            for(int i=0; i<perfis.size();i++)
-            {
-                if(perfis.get(i).getNomeUsuario()==this.jcbESTADOconsulta.getSelectedItem().toString())
-                {
-                    cons.porEstadoTAREFA(perfis.get(i),this.jcbESTADOconsulta.getSelectedItem().toString(), tarefas);
-                }
-            }
-        } catch (Exception e)
+        for(int i=0; i<perfis.size();i++)
         {
-            JOptionPane.showMessageDialog(null,"Erro:"+e);
+            if(perfis.get(i).getNomeUsuario()==String.valueOf(this.jcbUSUARIOconsulta.getSelectedItem()))
+            {
+                cons.porEstadoTAREFA(perfis.get(i),String.valueOf(this.jcbESTADOconsulta.getSelectedItem()), tarefas);
+            }
         }
-        
     }//GEN-LAST:event_jcbESTADOconsultaActionPerformed
+
+    private void btnPROJETOconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPROJETOconsultaActionPerformed
+        
+        Consulta cons = new Consulta();
+            
+        for(int i=0; i<perfis.size();i++)
+        {
+            if(perfis.get(i).getNomeUsuario()==String.valueOf(this.jcbUSUARIOconsulta.getSelectedItem()))
+            {
+                cons.porPROJETO(perfis.get(i),String.valueOf(this.jcbPROJETOconsulta.getSelectedItem()), tarefas);
+            }
+        }
+    }//GEN-LAST:event_btnPROJETOconsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1549,6 +1542,7 @@ public class Sistema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ADICIONARtarefaPROJETO;
     private javax.swing.JButton alteraFASE;
+    private javax.swing.JButton btnPROJETOconsulta;
     private javax.swing.JButton cadastraTAREFA;
     private javax.swing.JButton concluiPROJETO;
     private javax.swing.JButton concluiTAREFA;

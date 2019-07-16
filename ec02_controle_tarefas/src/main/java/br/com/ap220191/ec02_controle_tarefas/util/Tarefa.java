@@ -71,7 +71,7 @@ public class Tarefa {
             this.tarefaNome=tarefaNome;
             
             //Criar método que chama o objeto PERFIL e então obtém dele os dados   
-            tarefaRelator=relator;
+            setTarefaRelator(relator);
             
             tarefaTipo = tipoTarefa;
             
@@ -106,7 +106,7 @@ public class Tarefa {
     {
         if("Usuário".equals(executor.getTipoPerfil())&&cadastrada&&!iniciada&&!descartada&&!concluida&&!emAndamento)
         {
-            tarefaExecutor=executor;
+            setTarefaExecutor(executor);
             
             tarefaInicio=inicio;
         
@@ -162,19 +162,19 @@ public class Tarefa {
     public void concluirTarefa(Perfil executor, String solucao, LocalDate dataCONCLUSAO, boolean concluida)
     {
         /*Rever o atributo de entrada CONCLUIDA*/
-        if ("Usuário".equals(executor.getTipoPerfil())&&executor.getNomeUsuario().equals(tarefaExecutor.getNomeUsuario())&&cadastrada&&iniciada&&!descartada&&concluida&&emAndamento)
+        if ("Usuário".equals(executor.getTipoPerfil())&&executor.getNomeUsuario().equals(tarefaExecutor.getNomeUsuario())&&cadastrada&&iniciada&&!descartada&&concluida&&emAndamento&&dataCONCLUSAO.isAfter(tarefaInicio)||dataCONCLUSAO.isEqual(tarefaInicio))
         {            
         tarefaSolucao=solucao;
         tarefaConclusao=dataCONCLUSAO;
               
         //Adicionar o tempo gasto para conclusão
-        tempoDias = Period.between(tarefaInicio,tarefaConclusao).getDays()+30*Period.between(tarefaInicio,tarefaConclusao).getMonths();
+        tempoDias = Period.between(tarefaInicio,tarefaConclusao).getDays()+30*Period.between(tarefaInicio,tarefaConclusao).getMonths()+360*Period.between(tarefaInicio,tarefaConclusao).getYears();
         tempoHoras = tempoDias*8;
         
         this.concluida = true;
         emAndamento=false;
         
-        JOptionPane.showMessageDialog(null, "Tarefa concluída em "+getTarefaConclusao()+" levando "+getTempoDias()+" dias, somando um total de "+getTempoHoras()+" horas!");
+        
         JOptionPane.showMessageDialog(null, "Solução da tarefa: "+getTarefaSolucao());
         JOptionPane.showMessageDialog(null, "Descrição da tarefa: "+getTarefaDescricao());
         
@@ -193,6 +193,21 @@ public class Tarefa {
             JOptionPane.showMessageDialog(null,"Tarefa já foi concluída");
         } else {
             this.concluida = false;
+        }
+        
+        if(tarefaConclusao.isAfter(tarefaConclusaoPrevista))
+        {
+            int tempo = Period.between(tarefaConclusaoPrevista,tarefaConclusao).getDays()+30*Period.between(tarefaConclusaoPrevista,tarefaConclusao).getMonths()+360*Period.between(tarefaConclusaoPrevista,tarefaConclusao).getYears();
+            JOptionPane.showMessageDialog(null, "Tarefa concluída em "+getTarefaConclusao()+" levando "+getTempoDias()+" dias, somando um total de "+getTempoHoras()+" horas!");
+            JOptionPane.showMessageDialog(null, "Tarefa concluída fora do prazo!\n\nData prevista: "+getTarefaConclusaoPrevista()+"\nData de conclusão: "+getTarefaConclusao()+"\n\n"+tempo+" dias a mais que o previsto");
+        
+        } else if(tarefaConclusao.isEqual(tarefaConclusaoPrevista)||tarefaConclusao.isBefore(tarefaConclusaoPrevista)&&tarefaConclusao.isAfter(tarefaInicio))
+        {
+            JOptionPane.showMessageDialog(null, "Tarefa concluída dentro do prazo");
+            JOptionPane.showMessageDialog(null, "Tarefa concluída em "+getTarefaConclusao()+" levando "+getTempoDias()+" dias, somando um total de "+getTempoHoras()+" horas!");
+        } else 
+        {
+            JOptionPane.showMessageDialog(null, "Data inválida!");
         }
     }
     
@@ -259,12 +274,27 @@ public class Tarefa {
     public int getTempoHoras() {
         return tempoHoras;
     }
-    
+
+    public LocalDate getTarefaConclusaoPrevista() {
+        return tarefaConclusaoPrevista;
+    }
+
+    public void setTarefaDescricao(String tarefaDescricao) {
+        this.tarefaDescricao = tarefaDescricao;
+    }
     
 
     public String getTarefaNome() 
     {
         return tarefaNome;
+    }
+
+    public void setTarefaRelator(Perfil tarefaRelator) {
+        this.tarefaRelator = tarefaRelator;
+    }
+
+    public void setTarefaExecutor(Perfil tarefaExecutor) {
+        this.tarefaExecutor = tarefaExecutor;
     }
     
     public Perfil getTarefaRelator() 

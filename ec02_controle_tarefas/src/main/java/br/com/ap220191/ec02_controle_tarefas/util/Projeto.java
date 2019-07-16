@@ -22,7 +22,6 @@ public class Projeto {
     //private boolean criado=false;
     private boolean iniciado=false;
     private boolean concluido = false;
-    private boolean projeto=false; //Define se será um projeto ou tarefa simples
     private boolean andamento=false;
     
     private LocalDate projInicio;
@@ -31,41 +30,14 @@ public class Projeto {
     
     private LocalDate hoje = LocalDate.now();
     
-    private ArrayList<Tarefa> tarefasProjeto;
-    private ArrayList<Perfil> perfisProjeto;
-    
     private long mes,dias;
     
     private int tempoDias,tempoHoras;
     
-    //private LocalDate hoje = LocalDate.now();
-    public Projeto(){
-        //tarefasProjeto = new ArrayList<Tarefa>();
-       // perfisProjeto  = new ArrayList<Perfil>();
+    public Projeto()
+    {
+        
     }
-    
-    public void adicionarTarefa(Tarefa tarefa){
-        tarefasProjeto.add(tarefa);
-    }
-    public int quantidadeTarefas(){
-        return tarefasProjeto.size();
-    }
-    public Tarefa getTarefas(int posicao){
-        return tarefasProjeto.get(posicao);
-    }
-    
-    
-    public void adicionarPerfil(Perfil perfil){
-        perfisProjeto.add(perfil);
-    } 
-    public int quantidadePerfis(){
-        return perfisProjeto.size();
-    }
-    public Perfil getPerfil(int posicao){
-        return perfisProjeto.get(posicao);
-    }
-    
-    
     
     public void criarProjeto(String nome){
         
@@ -73,17 +45,16 @@ public class Projeto {
         {
             projNome = nome;
             
-            projFase = "Criado!";
+            projFase = "Criado";
         }   
     }
     
     public void iniciarProjeto(LocalDate start,int prazoDias)
     {
-        if(iniciado==false&&concluido==false&&andamento==false&&projeto)
+        if(!iniciado&&!concluido&&!andamento)
         {
             projInicio = start;
             
-            iniciado = true;
             
             if(projInicio.isBefore(hoje))
             {
@@ -95,72 +66,100 @@ public class Projeto {
                 mes = prazoDias/30;
 
                 projConclusaoPrevista=start.plusMonths(mes);
+                
+                iniciado = true;
+                projFase = "Iniciado";
+                
                 } else if ((prazoDias/30)<1)
                 {
                 projConclusaoPrevista=start.plusDays(prazoDias);
+                
+                iniciado = true;
+                projFase = "Iniciado";
+                
                 } else {
                 mes = (prazoDias - prazoDias%30)/30;
                 dias=prazoDias%30;
 
                 projConclusaoPrevista=start.plusDays(dias);
-                projConclusaoPrevista=projConclusaoPrevista.plusMonths(mes);            
-            }
-
-            iniciado = true;
-            
-            projFase = "Iniciado";
+                projConclusaoPrevista=projConclusaoPrevista.plusMonths(mes); 
+                
+                iniciado = true;
+                projFase = "Iniciado";
+                }
             }
         } else if(iniciado)
         {
             JOptionPane.showMessageDialog(null, "Este projeto já foi iniciado!");
-        } else  if(!iniciado){  
+        } else  if(concluido){  
                 //Informar erro
-                JOptionPane.showMessageDialog(null, "Este projeto não possui cadastro!");
-        }
-        
-        if(iniciado){
-            andamento=true;
+                JOptionPane.showMessageDialog(null, "Projeto já foi concluído");
+        } else if(andamento)
+        {
+            JOptionPane.showMessageDialog(null, "Projeto em andamento");
         }
     }
     
     public void concluirProjeto(LocalDate dataCONCLUSAO, boolean concluir){
         //Rever o atributo de entrada CONCLUIDA
-        if (iniciado&&concluir&&andamento){            
+        if (iniciado&&concluir&&andamento&&dataCONCLUSAO.isAfter(projInicio)){            
         //Adiconar uma condicão para CONCLUIDA
         
         projConclusao=dataCONCLUSAO;
               
         //Adicionar o tempo gasto para conclusão
-        tempoDias = Period.between(projInicio,projConclusao).getDays()+30*30*Period.between(projInicio,projConclusao).getMonths();
+        tempoDias = Period.between(projInicio,projConclusao).getDays()+30*30*Period.between(projInicio,projConclusao).getMonths()+360*Period.between(projConclusaoPrevista,projConclusao).getYears();
         tempoHoras = tempoDias*8;
         
         concluido = true;
         andamento=false;
         
+        projFase="Finalizado";
+        
+        if(projConclusao.isAfter(projConclusaoPrevista))
+        {
+            int tempo = Period.between(projConclusaoPrevista,projConclusao).getDays()+30*Period.between(projConclusaoPrevista,projConclusao).getMonths()+360*Period.between(projConclusaoPrevista,projConclusao).getYears();
+            JOptionPane.showMessageDialog(null, "Projeto concluído fora do prazo!\n\nData prevista: "+getProjConclusaoPrevista()+"\nData de conclusão: "+getProjConclusao()+"\n\n"+tempo+" dias a mais que o previsto");
+                    
+        } else if(projConclusao.isAfter(projInicio)&&projConclusao.isBefore(projConclusaoPrevista)||projConclusaoPrevista.isEqual(projConclusaoPrevista))
+        {
+            JOptionPane.showMessageDialog(null, "Projeto concluído dentro do prazo!\n\nData prevista: "+getProjConclusaoPrevista()+"\nData de conclusão: "+getProjConclusao()+"\n\n"+getTempoDias()+" dias e "+getTempoHoras()+" horas!");
+        } else 
+        {
+            JOptionPane.showMessageDialog(null, "Data inválida");
+        }
+        
         } else {
             concluido = false;
         }
-    }
-    
-    public void faseProjeto(String fase){
-        
-        //Possível tratamento de excessão
-        if(iniciado&&concluido==false&&andamento&&projeto){
-            projFase = fase;
-        }   
-    }
-
-    public String getProjNome() {
-        return projNome;
     }
 
     public void setProjFase(String projFase) {
         this.projFase = projFase;
     }
+    
+    public String getProjNome() {
+        return projNome;
+    }
+
+    public int getTempoDias() {
+        return tempoDias;
+    }
+
+    public int getTempoHoras() {
+        return tempoHoras;
+    }
 
     public String getProjFase() {
         return projFase;
     }
-    
+
+    public LocalDate getProjConclusao() {
+        return projConclusao;
+    }
+
+    public LocalDate getProjConclusaoPrevista() {
+        return projConclusaoPrevista;
+    }
     
 }

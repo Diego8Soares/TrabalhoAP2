@@ -33,13 +33,19 @@ public class Consulta {
 
                 for(int i=0; i<tarefasLista.size();i++)
                 {
-                    if(tarefasLista.get(i).getProjetoVinculado().getProjNome()==projetoNome)
+                    try
                     {
-                        lista+= " *"+tarefasLista.get(i).getTarefaNome()+"*";
+                        if(tarefasLista.get(i).getProjetoVinculado().getProjNome()==projetoNome)
+                        {
+                            lista+= "\n*"+tarefasLista.get(i).getTarefaNome()+"*";
+                        }
+                    } catch (Exception e)
+                    {
+                        
                     }
                 }
 
-                JOptionPane.showMessageDialog(null, "O projeto "+projetoNome.toUpperCase()+" possui a(s) tarefa(s) "+lista.toUpperCase()+" vinculada(s) a ele.");
+                JOptionPane.showMessageDialog(null, "O projeto "+projetoNome.toUpperCase()+" possui a(s) tarefa(s): "+lista.toUpperCase());
             }
         }
         else
@@ -56,15 +62,30 @@ public class Consulta {
             {
 
             } else {
+                
+                String tarefas = "";
+                String projetos = "";
+                
                 for (int i=0; i<tarefasLista.size();i++)
                 {
-                    if(tarefasLista.get(i).getProjetoVinculado().getProjFase()==faseProjeto)
+                    //JOptionPane.showMessageDialog(null,tarefasLista.get(i).getProjetoVinculado());
+                    try 
                     {
-                        JOptionPane.showMessageDialog(null,"A tarefa "+tarefasLista.get(i).getTarefaNome().toUpperCase()+" pertence a "+faseProjeto.toUpperCase()+" do projeto "+tarefasLista.get(i).getProjetoVinculado().getProjNome().toUpperCase());
+                        if(tarefasLista.get(i).getProjetoVinculado().getProjFase()==faseProjeto)
+                        {
+                            tarefas+="\n*"+tarefasLista.get(i).getTarefaNome().toUpperCase()+"          -->        "+tarefasLista.get(i).getProjetoVinculado().getProjNome()+"";
+                        }
+                        
+                        if(i==(tarefasLista.size()-1))
+                        {
+                            JOptionPane.showMessageDialog(null,"Tarefas pertencentes à "+faseProjeto.toUpperCase()+": \nTarefa        -->         Projeto "+tarefas+""+projetos);
+                        }
+                        
+                    } catch (Exception e) 
+                    {
+                        JOptionPane.showMessageDialog(null,"Tarefa"+tarefasLista.get(i).getTarefaNome().toUpperCase()+" sem vínculo");
                     }
                 }
-                
-                
             } 
         } else
         {
@@ -87,11 +108,11 @@ public class Consulta {
                 {
                     if(tarefasLista.get(i).getTarefaTipo()==tipoTarefa)
                     {
-                        str+=" *"+tarefasLista.get(i).getTarefaNome().toUpperCase()+"* ";
+                        str+="\n*"+tarefasLista.get(i).getTarefaNome().toUpperCase()+"*";
                     }
                 }
 
-                JOptionPane.showMessageDialog(null,"A(s) tarefa(s)"+str+" é(são) do tipo "+tipoTarefa.toUpperCase());
+                JOptionPane.showMessageDialog(null,"Tarefa(s) do tipo "+tipoTarefa.toUpperCase()+": "+str);
             }
         } else 
         {
@@ -111,13 +132,19 @@ public class Consulta {
 
                 for(int i=0; i<tarefasLista.size();i++)
                 {
-                    if(estadoTarefa==tarefasLista.get(i).getEstado())
+                    try 
                     {
-                        lista+=" *"+tarefasLista.get(i).getTarefaNome()+"*\n";
+                        if(estadoTarefa==tarefasLista.get(i).getEstado())
+                        {
+                            lista+="\n*"+tarefasLista.get(i).getTarefaNome()+"*";
+                        }
+                    } catch (Exception e) 
+                    {
+                        
                     }
                 }
                 
-                JOptionPane.showMessageDialog(null, estadoTarefa.toUpperCase()+":\n"+lista);
+                JOptionPane.showMessageDialog(null, estadoTarefa.toUpperCase()+":"+lista);
             }
         }
         else
@@ -138,13 +165,20 @@ public class Consulta {
             {
                 for (int i=0; i<tarefasLista.size();i++)
                 {
-                    if(tarefasLista.get(i).getTarefaRelator().getNomeUsuario()==relator)
+                    try
                     {
-                        JOptionPane.showMessageDialog(null, "O relator "+relator.toUpperCase()+" foi criador da tarefa "+tarefasLista.get(i).getTarefaNome().toUpperCase()+" que tem por objetivo "+tarefasLista.get(i).getTarefaDescricao().toUpperCase());
-                    } 
-                    else 
+                        if(tarefasLista.get(i).getTarefaRelator().getNomeUsuario()==relator)
+                        {
+                            JOptionPane.showMessageDialog(null, "O relator "+relator.toUpperCase()+" foi criador da tarefa "+tarefasLista.get(i).getTarefaNome().toUpperCase()+"!\nTendo esta o objetivo "+tarefasLista.get(i).getTarefaDescricao().toUpperCase()+"\n"+tarefasLista.get(i).getTarefaDescricao().toUpperCase()+" pertencente ao projeto "+tarefasLista.get(i).getProjetoVinculado().getProjNome());
+                        } 
+                        else 
+                        {
+                            JOptionPane.showMessageDialog(null,"Este não é o relator desta tarefa");
+                        }
+                        
+                    } catch (Exception e)
                     {
-                        JOptionPane.showMessageDialog(null,"Este não é o relator desta tarefa");
+                        JOptionPane.showMessageDialog(null, "Executor:"+relator+"\nObjeto: "+tarefasLista.get(i).getTarefaRelator()+"\nNome do obj: "+tarefasLista.get(i).getTarefaRelator().getNomeUsuario()+"\nNome: "+tarefasLista.get(i).getTarefaNome()+"\n"+tarefasLista.get(i).getTarefaDescricao()+"\n"+tarefasLista.get(i).getProjetoVinculado());
                     }
                 }
             }
@@ -167,9 +201,15 @@ public class Consulta {
             {
                 for (int i=0; i<tarefasLista.size();i++)
                 {
-                    if(tarefasLista.get(i).getTarefaExecutor().getNomeUsuario()==executor)
+                    try
                     {
-                        JOptionPane.showMessageDialog(null, "O executor "+executor.toUpperCase()+" é responsável pela tarefa "+tarefasLista.get(i).getTarefaNome().toUpperCase()+" que tem por objetivo "+tarefasLista.get(i).getTarefaDescricao().toUpperCase());
+                        if(tarefasLista.get(i).getTarefaExecutor().getNomeUsuario()==executor)
+                        {
+                            JOptionPane.showMessageDialog(null, "O executor "+executor.toUpperCase()+" é responsável pela tarefa "+tarefasLista.get(i).getTarefaNome().toUpperCase()+" que tem por objetivo "+tarefasLista.get(i).getTarefaDescricao().toUpperCase());
+                        }
+                    } catch (Exception e)
+                    {
+                        
                     }
                 }
             }
