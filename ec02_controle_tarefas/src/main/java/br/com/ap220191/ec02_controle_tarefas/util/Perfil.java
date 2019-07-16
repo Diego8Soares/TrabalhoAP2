@@ -6,6 +6,7 @@
 package br.com.ap220191.ec02_controle_tarefas.util;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,86 +19,56 @@ public class Perfil {
     private String cargo;
     private String setorTrabalho;
     
-    private ArrayList<Tarefa> tarefasPerfil; // 14/07 - Excluir
-    private ArrayList<Projeto> projetosPerfil; // Excluir
-    
-    public Perfil(){
-        tarefasPerfil  = new ArrayList<Tarefa>(); // Excluir
-        projetosPerfil = new ArrayList<Projeto>();  // Excluir
-    }
-    
-    
-    public void adicionarTarefa(Tarefa tarefa)  // Excluir
+    public Perfil()
     {
-        tarefasPerfil.add(tarefa);
+        
     }
-    public int quantidadeTarefas()
+    
+    public void Perfil(String nome, String Cargo, String perfil, String setor)
     {
-        return tarefasPerfil.size();
-    }
-    public Tarefa getTarefasPerfil(int posicao)
-    {
-        return tarefasPerfil.get(posicao);
-    }
-    
-    public void atualizaTarefa(int posicao, Tarefa tarefa)
-    {
-        tarefasPerfil.set(posicao,tarefa);
-    }
-    
-    public void atualizaProjeto(int posicao, Projeto projeto)
-    {
-        projetosPerfil.set(posicao,projeto);
-    }
-    
-    
-    
-    public void adicionarProjeto(Projeto projeto){
-        projetosPerfil.add(projeto);
-    }
-    public int quantidadeProjetos(){
-        return projetosPerfil.size();
-    }public Projeto getProjetosPerfil(int posicao) {
-        return projetosPerfil.get(posicao); // Excluir
-    }
-      
-  
-    public void Perfil(String nome, String Cargo, String perfil, String setor){
-        nomeUsuario=nome;
-        cargo=Cargo;
-        setorTrabalho=setor;
-        tipoPerfil = perfil;    
+            nomeUsuario=nome;
+            cargo=Cargo;
+            setorTrabalho=setor;
+            tipoPerfil = perfil; 
     }
 
-    public String getTipoPerfil() {
+    public String getTipoPerfil()
+    {
         return tipoPerfil;
     }
 
-    public void setTipoPerfil(String tipoPerfil) {
+    public void setTipoPerfil(String tipoPerfil)
+    {
         this.tipoPerfil = tipoPerfil;
     }
 
-    public String getNomeUsuario() {
+    public String getNomeUsuario()
+    {
         return nomeUsuario;
     }
 
-    public void setNomeUsuario(String nomeUsuario) {
+    public void setNomeUsuario(String nomeUsuario)
+    {
         this.nomeUsuario = nomeUsuario;
     }
 
-    public String getCargo() {
+    public String getCargo()
+    {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(String cargo)
+    {
         this.cargo = cargo;
     }
 
-    public String getSetorTrabalho() {
+    public String getSetorTrabalho()
+    {
         return setorTrabalho;
     }
 
-    public void setSetorTrabalho(String setorTrabalho) {
+    public void setSetorTrabalho(String setorTrabalho)
+    {
         this.setorTrabalho = setorTrabalho;
     }
     

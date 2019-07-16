@@ -40,8 +40,8 @@ public class Projeto {
     
     //private LocalDate hoje = LocalDate.now();
     public Projeto(){
-        tarefasProjeto = new ArrayList<Tarefa>();
-        perfisProjeto  = new ArrayList<Perfil>();
+        //tarefasProjeto = new ArrayList<Tarefa>();
+       // perfisProjeto  = new ArrayList<Perfil>();
     }
     
     public void adicionarTarefa(Tarefa tarefa){
@@ -71,7 +71,7 @@ public class Projeto {
         
         if(iniciado==false&&concluido==false&&andamento==false)
         {
-            projNome = nome.toUpperCase();
+            projNome = nome;
             
             projFase = "Criado!";
         }   
@@ -110,7 +110,10 @@ public class Projeto {
             
             projFase = "Iniciado";
             }
-        } else {
+        } else if(iniciado)
+        {
+            JOptionPane.showMessageDialog(null, "Este projeto já foi iniciado!");
+        } else  if(!iniciado){  
                 //Informar erro
                 JOptionPane.showMessageDialog(null, "Este projeto não possui cadastro!");
         }
@@ -120,12 +123,12 @@ public class Projeto {
         }
     }
     
-    public void concluirProjeto(boolean concluir){
+    public void concluirProjeto(LocalDate dataCONCLUSAO, boolean concluir){
         //Rever o atributo de entrada CONCLUIDA
         if (iniciado&&concluir&&andamento){            
         //Adiconar uma condicão para CONCLUIDA
         
-        projConclusao=LocalDate.now();
+        projConclusao=dataCONCLUSAO;
               
         //Adicionar o tempo gasto para conclusão
         tempoDias = Period.between(projInicio,projConclusao).getDays()+30*30*Period.between(projInicio,projConclusao).getMonths();

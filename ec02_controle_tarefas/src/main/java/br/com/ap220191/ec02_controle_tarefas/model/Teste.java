@@ -21,12 +21,12 @@ public class Teste {
     public static void main(String args[]){
         
         LocalDate hoje = LocalDate.now();        
-        LocalDate mesQueVem = hoje.plusDays(3);
+        LocalDate mesQueVem = hoje.plusDays(0);
         
         mesQueVem = mesQueVem.plusMonths(4);
         int dias = Period.between(hoje,mesQueVem).getDays() + 30*Period.between(hoje,mesQueVem).getMonths();
         
-        Tarefa tf = new Tarefa();
+        /*Tarefa tf = new Tarefa();
         
         Perfil p1 = new Perfil();
         Perfil p2 = new Perfil();
@@ -41,8 +41,8 @@ public class Teste {
         p1.adicionarProjeto(prj);
         p2.adicionarProjeto(prj);
           
-        tf.cadastrarTarefa(p1, p2, "Dupla", "Melhoria");
-        tf.iniciarTarefa(hoje, dias);
+        tf.cadastrarTarefa(p1, "Dupla", "Melhoria");
+        tf.iniciarTarefa(p2,hoje, dias);
         
         tf.adicionarPerfil(p1);
         tf.adicionarPerfil(p2);
@@ -54,7 +54,7 @@ public class Teste {
         prj.adicionarPerfil(p1);
         prj.adicionarPerfil(p2);
         
-        prj.adicionarTarefa(tf);
+        prj.adicionarTarefa(tf);*/
                
         //boolean b=false;
         /*
@@ -71,25 +71,18 @@ public class Teste {
         for(int i=0; i<p1.quantidadeTarefas();i++){
             System.out.println("\n"+p1.getTarefasPerfil(i).getTarefaNome()+"\n"+p1.getTarefasPerfil(i).getTarefaTipo());
         }
-        System.out.println("");
+        System.out.println("");*/
+        String nome = "";
         
-        for(int i=0; i<prj.quantidadePerfis();i++){
-            System.out.println(prj.getPerfil(i).getTipoPerfil());
-        }*/
-        String str="";
-        
-        for(int i=0;i<10;i++){
+        for(int i=0; i<10;i++){
             if(i%2==0)
             {
-                str+="nome";
-            }
-            else{
-                str+=",";
+                nome+=" "+i+"\n";
             }
         }
         
         
-        JOptionPane.showMessageDialog(null, str);
+        JOptionPane.showMessageDialog(null, "Valor: "+nome);
     }
     
 }
