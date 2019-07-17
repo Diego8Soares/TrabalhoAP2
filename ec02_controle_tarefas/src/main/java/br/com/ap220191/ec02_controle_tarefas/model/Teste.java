@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.ap220191.ec01_faculdade.model;
+package br.com.ap220191.ec02_controle_tarefas.model;
 
 /**
  *
